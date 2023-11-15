@@ -10,7 +10,7 @@ const Otp = () => {
     const [showResendButton, setShowResendButton] = useState(false);
     const location = useLocation()
     const navigation = useNavigate()
-    const {userEmail,otpId,userId}=location.state
+    const {otpId,userId}=location.state
   
 
 

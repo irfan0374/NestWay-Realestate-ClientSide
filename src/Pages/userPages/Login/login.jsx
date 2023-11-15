@@ -39,7 +39,7 @@ export function Login() {
         const { userData, otpId } = res.data;
         toast(res?.data?.status)
         navigate("/otp", {
-          state: { userEmail: userData.email, otpId: otpId, userId: userData._id },
+          state: { otpId: otpId, userId: userData._id },
         });
         setLoading(false)
       }

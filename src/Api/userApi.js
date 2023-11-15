@@ -19,4 +19,12 @@ export const userLoginWithGoogle=async(userEmail)=>{
     console.log(data,"data")
     return data;
 }
+export const listProperty=async()=>{
+    const data=await userAxiosInstance.get('/propertyList')
+    return data;
+}
+export const detailProperty=async(propertyId)=>{
+    const data=await userAxiosInstance.get(`/propertyDetails/${propertyId}`)
+    return data;
+}
 

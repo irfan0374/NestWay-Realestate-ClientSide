@@ -7,6 +7,9 @@ import PartnerOtp from '../Pages/partnerPages/LoginPage/partnerOtp'
 import PartnerProtect from './partnerPrivate/PartnerProtector'
 import PartnerPublic from './partnerPrivate/PartnerPublic'
 import PartnerHome from '../Pages/partnerPages/PartnerHome'
+import KycUpload from '../Pages/partnerPages/LoginPage/KycUpload'
+import DetailPage from '../Pages/partnerPages/DetailPage'
+
 const PartnerRoute = () => {
   return (
     <>
@@ -15,6 +18,11 @@ const PartnerRoute = () => {
         <Route path='/registration' element ={<PartnerPublic><Registration/></PartnerPublic>}/>
         <Route path='/otp' element ={<PartnerPublic><PartnerOtp/></PartnerPublic>}/>
         <Route path='/home' element={<PartnerHome/>}/>
+        <Route path='/kycUpload' element={<KycUpload/>}/>
+        <Route path='/partnerHome' element={<PartnerHome/>}/>
+        <Route path='/propertyDetail/:propertyId' element={<DetailPage/>}/>
+
+
         
     </Routes>
     </>

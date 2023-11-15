@@ -1,7 +1,6 @@
 import React,{useState,useRef,useEffect} from 'react'
 import {useFormik}from 'formik'
 import { useNavigate } from 'react-router-dom'
-import { Dispatch } from 'react'
 import { useDispatch } from 'react-redux'
 import { loginSchema } from '../../../schema/loginValidation'
 import { loginVerification } from '../../../Api/partnerApi'
@@ -23,8 +22,6 @@ const PartnerLogin = () => {
     })
     async function onSubmit(){
         try{
-            
-          
         const res=await loginVerification(values)
         if(res?.status==200){
         
@@ -38,8 +35,14 @@ const PartnerLogin = () => {
                 })
             );
             toast.success(res?.data?.message);
-        navigate("/partner/home");
-        }
+        navigate("/partner/partnerHome");
+        } 
+        
+        // else if(res?.status==201){
+        //   navigate("/partner/kycUpload",{state:res?.data?.partner._id})
+        // }
+          
+        
 
         }catch(error){
             res.status(400).json({message:"internal server Error"})

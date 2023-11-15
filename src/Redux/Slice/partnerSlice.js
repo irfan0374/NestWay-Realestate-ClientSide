@@ -4,7 +4,8 @@ const partnerSlice=createSlice({
     name:"partner",
     initialState:{
         partner:null,
-        token:""
+        token:"",
+        propertystate : null,
     },
     reducers:{
         partnerLogin:(state,action)=>{
@@ -16,10 +17,13 @@ const partnerSlice=createSlice({
             state.partner={
                 token:"",
                 partner:null
+            };
+        },
+        addPropertyState: (state, action) => {
+            state.propertystate=action.payload;
+          },
 
-            }
-        }
     }
-})
-export const {partnerLogin,partnerLogout}=partnerSlice.actions
+});
+export const {partnerLogin,partnerLogout,addPropertyState}=partnerSlice.actions
 export default partnerSlice.reducer

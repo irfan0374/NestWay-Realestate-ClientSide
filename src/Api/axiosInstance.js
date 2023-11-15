@@ -3,7 +3,6 @@ import {toast}from "react-toastify"
 
 const baseURL=import.meta.env.VITE_BASE_URL
 const userBaseUrl=baseURL;
-console.log(baseURL);
 const adminBaseUrl=`${baseURL}/admin`;
 const partnerBaseUrl=`${baseURL}/partner`;
 
@@ -29,6 +28,7 @@ const attachToken=(req,tokenName)=>{
 
 export const userAxiosInstance=createAxiosInstance(userBaseUrl);
 userAxiosInstance.interceptors.request.use(async (req)=>{
+    
     const modifiedReq=attachToken(req,"userToken");
     return modifiedReq;
 });

@@ -13,3 +13,30 @@ export async function loginVerification(LoginData){
     const data=await partnerAxiosInstance.post('/login',LoginData)
     return data
 } 
+export async function partnerKycUpload({partnerId,kycImage}){
+    try{
+            
+        const data=await partnerAxiosInstance.patch('/partnerKycUpload',{partnerId,kycImage})
+        return data;
+
+    }catch(error){
+        console.log(error.message)
+    }
+    
+}
+export async function addProperty(values){
+    
+    const data=await partnerAxiosInstance.post("/addProperty",{...values})
+        return data;
+    }
+
+export async function listProperty(partnerId){
+      
+        const data=await partnerAxiosInstance.get(`/myProperty/${partnerId}`)
+        return data;
+}
+
+export async function propertylist(propertyId){
+    const data=await partnerAxiosInstance.get(`/propertyDetail/${propertyId}`)
+    return data;
+}

@@ -1,6 +1,19 @@
 import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Link } from 'react-router-dom'
+import { userLogout } from '../../Redux/Slice/userSlice'
+import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
+  const navigate=useNavigate()
+  const user=useSelector((state)=>state.userReducer.user)
+  const dispatch = useDispatch()
+  console.log(user)
+  const handleLogout = () => {
+    localStorage.removeItem('userToken')
+    dispatch(userLogout())
+    navigate("/login")
+  }
   return (
   <>
   <div className="navbar bg-base-1000">
@@ -34,14 +47,19 @@ const Navbar = () => {
         </div>
       </label>
       <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
-        <li>
+        {user ? (<>
+          <li>
           <a className="justify-between">
             Profile
             <span className="badge">New</span>
           </a>
         </li>
         <li><a>Settings</a></li>
-        <li><a>Logout</a></li>
+        <li><a onClick={handleLogout}>Logout</a></li>
+        </>):(<>
+          <Link to='/login'><li>user login</li></Link>
+          <Link to='/partner'><li>partner login</li></Link>
+        </>)}
       </ul>
     </div>
   </div>

@@ -5,13 +5,19 @@ import ShowList from '../Pages/adminPages/List'
 import PartnerLists from '../Pages/adminPages/partnerList'
 import AdminProtect from './AdminPrivate/AdminProtect'
 import AdminPublic from './AdminPrivate/AdminPublic'
-const AdminRoute = () => {
+import KycUpload from '../Pages/adminPages/kycUpload'
+import PropertyList from '../Pages/adminPages/PropertyList'
+import PropertyApproval from '../Pages/adminPages/PropertyApproval'
+const   AdminRoute = () => {
   return (
     <>
     <Routes>
-        <Route path="/" element={<AdminPublic><AdminLogin/></AdminPublic>}/>
-        <Route path='/dashboard' element={<AdminProtect><ShowList/></AdminProtect>} />
+        <Route path="/" element={<AdminLogin/>}/>
+        <Route path='/userList' element={<AdminProtect><ShowList/></AdminProtect>} />
         <Route path='/partnerList' element={<AdminProtect><PartnerLists/></AdminProtect>} />
+        <Route path='/kycApproval/:partnerId' element={<AdminProtect><KycUpload/></AdminProtect>}/>
+        <Route path='/propertylist' element={<AdminProtect><PropertyList/></AdminProtect>}/>
+        <Route path='/propertyApproval/:propertyId' element={<AdminProtect><PropertyApproval/></AdminProtect>}/>
     </Routes>
     </>
   )

@@ -5,7 +5,7 @@ import React from 'react'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 
 const Homepage=()=>{
-  const user=useSelector(state=>state.userReducer.user.name)
+  const user=useSelector(state=>state.userReducer)
   
     return (
 <>
@@ -22,7 +22,7 @@ const Homepage=()=>{
   <div className="hero-content text-center text-neutral-content">
     <div className="max-w-md">
 
-      <h1 className="mb-5 text-5xl font-bold">{`hello ${user}`}</h1>
+      {user.name && <h1 className="mb-5 text-5xl font-bold">{`hello ${user.name}`}</h1>}
       <p className="mb-5">Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda excepturi exercitationem quasi. In deleniti eaque aut repudiandae et a id nisi.</p>
       <button className="btn btn-primary">Get Started</button>
     </div>

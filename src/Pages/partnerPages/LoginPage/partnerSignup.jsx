@@ -134,6 +134,7 @@ const PartnerSignup = () => {
             name="confirmPassword"
             id="confirmPassword"
             {...getFieldProps("confirmPassword")}
+            
             placeholder="••••••••"
            
           

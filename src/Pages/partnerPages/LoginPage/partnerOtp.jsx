@@ -38,8 +38,8 @@ const onSubmit=async()=>{
         const res=await partnerOtpVerification(combinedOTP,otpId,partnerId)
         console.log(res)
         if(res?.data?.message){
-            toast.success(res?.data?.message)
-            navigation("/partner/login",{state:"email verification"})   
+            toast.info(res?.data?.message)
+            navigation("/partner/kycUpload",{state:partnerId})   
         }
     } catch (err) {
         toast.error(err.response.data.message)

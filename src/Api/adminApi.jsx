@@ -19,7 +19,29 @@ export async function userBlock(userId,status){
     return data
 }
 export async function partnerBlock(partnerId,status){
-    console.log("api")
     const data=await adminAxiosInstance.post('/partnerBlock',{partnerId,status})
     return data
 }
+export async function findPartner(partnerid){
+    const data=await adminAxiosInstance.get(`/getPartner/${partnerid}`)
+    return data
+}
+export async function kycApprove(partnerId,status){
+    const data=await adminAxiosInstance.patch('/kycApproval',{partnerId,status})
+    return data;
+}
+export async function propertylist(){
+    const data=await adminAxiosInstance.get("/getProperty")
+    return data;
+}
+export async function findProperty(propertyId){
+   
+    const data=await adminAxiosInstance.get(`/findProperty/${propertyId}`)
+    return data;
+}
+export async function propertyApproval(propertyId,status){
+    const data=await adminAxiosInstance.patch('/propertyApproval',{propertyId,status})
+    console.log(data,"data")
+    return data;
+}
+

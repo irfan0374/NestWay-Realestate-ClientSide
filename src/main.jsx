@@ -7,7 +7,6 @@ import { ThemeProvider } from "@material-tailwind/react";
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './Redux/Store.js';
-
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <Provider store={store}>

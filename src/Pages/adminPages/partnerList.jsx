@@ -3,9 +3,9 @@ import { partnerList, partnerBlock } from '../../Api/adminApi';
 import { toast } from 'react-toastify';
 import NavBar from '../../Component/adminComponet.js/NavBar';
 import SideBar from '../../Component/adminComponet.js/SideBar';
-import { Button,IconButton } from '@material-tailwind/react';
+import { Button, IconButton } from '@material-tailwind/react';
 import { ArrowRightIcon, ArrowLeftIcon } from "@heroicons/react/24/outline";
-
+import { Link } from 'react-router-dom';
 const PartnerLists = () => {
   const [partners, setPartner] = useState([]);
   const [searchInput, setSearchInput] = useState('');
@@ -54,21 +54,21 @@ const PartnerLists = () => {
   const firstIndex = (currentPage - 1) * recordPerPage
   const lastIndex = firstIndex + recordPerPage
   const records = partners.slice(firstIndex, lastIndex)
-  const number=Array.from({ length: Math.ceil(partners.length / recordPerPage) }, (_, index) => index + 1)
+  const number = Array.from({ length: Math.ceil(partners.length / recordPerPage) }, (_, index) => index + 1)
 
-  const handleSetActive=(index)=>{
+  const handleSetActive = (index) => {
     setCurrentPage(index)
-  
+
   }
 
-  const prev=()=>{
-    if(currentPage>1){
-      setCurrentPage(currentPage-1)
+  const prev = () => {
+    if (currentPage > 1) {
+      setCurrentPage(currentPage - 1)
     }
   }
 
-  const next=()=>{
-    if(currentPage<Math.ceil(partners.length/recordPerPage)){
+  const next = () => {
+    if (currentPage < Math.ceil(partners.length / recordPerPage)) {
       setCurrentPage(currentPage + 1)
     }
   }
@@ -145,15 +145,31 @@ const PartnerLists = () => {
                           )}
                         </td>
                         <td className="px-6 py-4">
-                          {partner.adminApproved ? (
-                            <div className="flex items-center">
-                              <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2" /> Approved
-                            </div>
-                          ) : (
-                            <div className="flex items-center">
-                              <div className="h-2.5 w-2.5 rounded-full bg-red-700 mr-2" /> Not Approved
-                            </div>
-                          )}
+                          <div className='flex space-x-2'>
+                            {partner.adminApproved === "approve" ? (
+                              <div className="flex items-center">
+                                <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2" /> Approved
+                              </div>
+                            ) : (
+                              <div className="flex items-center">
+                                <div className="h-2.5 w-2.5 rounded-full bg-red-700 mr-2" /> Not Approved
+
+                              </div>
+
+                            )}
+                            {partner.adminApproved === ""  && (
+                            < Link to={`/admin/kycApproval/${partner._id}`} >
+                              <button className="relative z-10 block bg-gray-800 rounded p-2 hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
+                                <svg className="h-2 w- text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z" />
+                                </svg>
+                              </button>
+                            </Link>
+                            )}
+
+
+                          </div>
+
                         </td>
                         <td className='px-6 py-4'>
                           {partner.isBlocked ? (
@@ -280,18 +296,18 @@ const PartnerLists = () => {
                     className='flex gap-2'
                     disabled={currentPage === 1}
                     onClick={prev}
-                    
+
                   >
                     <ArrowLeftIcon strokeWidth={2} className='h-4 w-4' />Previous
                   </Button>
 
                   <div className="flex gap-2">
-                  {number.map(page => (
-                    <IconButton key={page}
-                    
-                     {...getItemProps(page)}>{page}</IconButton>
-                  ))}
-                </div>
+                    {number.map(page => (
+                      <IconButton key={page}
+
+                        {...getItemProps(page)}>{page}</IconButton>
+                    ))}
+                  </div>
                   <Button
                     variant='text'
                     className='flex item-center gap-2'

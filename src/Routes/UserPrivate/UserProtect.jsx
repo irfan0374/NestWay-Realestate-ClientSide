@@ -3,7 +3,7 @@ import { Navigate } from "react-router-dom";
 
 const UserProtect=(props)=>{
     try{
-        const token =localStorage.getItem("userToken")
+        const token =localStorage.getItem("usertoken")
         if(token){
             // const decodedToken=jwt_decode(token)
             // const currentTime=Date.now()/1000;
