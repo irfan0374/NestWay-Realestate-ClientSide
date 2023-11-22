@@ -7,19 +7,20 @@ export async function adminLoginVerification(loginData){
 }
 
 export async function userList(){
-    const data=await adminAxiosInstance.post('/listUser')
+    const data=await adminAxiosInstance.get('/listUser')
     return data
 }
 export async function partnerList(){
-    const data=await adminAxiosInstance.post('/listPartner')
+    const data=await adminAxiosInstance.get('/listPartner')
     return data
 }
 export async function userBlock(userId,status){
-    const data=await adminAxiosInstance.post('/userBlock',{userId,status})
+    console.log("blockk")
+    const data=await adminAxiosInstance.patch('/userBlock',{userId,status})
     return data
 }
 export async function partnerBlock(partnerId,status){
-    const data=await adminAxiosInstance.post('/partnerBlock',{partnerId,status})
+    const data=await adminAxiosInstance.patch('/partnerBlock',{partnerId,status})
     return data
 }
 export async function findPartner(partnerid){
@@ -35,7 +36,7 @@ export async function propertylist(){
     return data;
 }
 export async function findProperty(propertyId){
-   
+
     const data=await adminAxiosInstance.get(`/findProperty/${propertyId}`)
     return data;
 }

@@ -4,17 +4,17 @@ const DetailLogin = () => {
   return (
     <>
       <div className="hero min-h-screen" style={{ backgroundImage: 'url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTMM6391V_4S13FktigwByHtfIGi83vNVobg&usqp=CAU)' }}>
-        <div className='flex justify-around'>
-          <div className="max-w-md py-44 pl-24">
+        <div className='flex justify-around px-6'>
+          <div className="max-w-md py-44 pl-30">
             <h1 className="mb-5 text-5xl font-bold decoration-double text-white">Hello there...</h1>
-            <p className="text-5xl decoration-4 text-white">List your property on nestWay.online</p>
+            <p className="text-5xl decoration-4  text-white">List your property on SevenSky.online</p>
           </div>
 
           {/* card  */}
 
-          <div className='flex justify-end h-screen' >
-          <div className="text-gray-700 bg-white shadow-md w-80  rounded-xl bg-clip-border">
-              <div className="p-14">
+          <div className='flex justify-end mx-4' >
+          <div className="text-gray-700 bg-white shadow-md w-80  rounded-xl bg-clip-border ">
+              <div className="p-14 ">
                 <h5 className="block mb-2 font-sans text-xl antialiased font-semibold leading-snug tracking-normal text-blue-gray-900">
                   Let's partner to unlock a world of opportunities and growth
                 </h5>

@@ -28,9 +28,8 @@ const Reg = () => {
     try {
       const res = await userlogin(values)
       if(res?.status==200){
-        console.log("res sucess")
         const {token,User}=res.data
-        localStorage.setItem("userToken",token);
+        localStorage.setItem("usertoken",token);
         dispatch(
           userLogin({
             token: token,

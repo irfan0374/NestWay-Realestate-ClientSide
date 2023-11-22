@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from 'react';
-import Navbar from '../../Component/userComponent.js/Navbar';
+import Navbar from '../../Component/partnerComponent.js/Navbar';
 import PartnerCard from '../../Component/partnerComponent.js/PartnerCard';
 import { listProperty } from '../../Api/partnerApi';
 import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import Loading from '../../Component/Loading/Loading';
 
   const PartnerHome = () => {
     const { _id } = useSelector((state) => state.partnerReducer.partner);
+    const [loading,setLoading]=useState(false)
     const partnerId = _id;
     const [myProperty, setProperty] = useState([]);
     const navigate = useNavigate();
@@ -15,9 +17,11 @@ import { toast } from 'react-toastify';
 
 
   useEffect(() => {
+    setLoading(true)
     listProperty(partnerId)
       .then((res) => {
         setProperty(res?.data?.Property);
+        setLoading(false)
        
       })
       .catch((error) => {
@@ -30,9 +34,11 @@ import { toast } from 'react-toastify';
   }, [partnerId]);
 
   useEffect(()=>{
+    setLoading(true)
     listProperty(partnerId)
       .then((res) => {
         setProperty(res?.data?.Property);
+        setLoading(false)
        
       })
       .catch((error) => {
@@ -43,28 +49,28 @@ import { toast } from 'react-toastify';
         }
       });
 
-  },[propertystate ])
+  },[propertystate])
 
 
   return (
     <>
     <Navbar/>
       <div className='font-bold text-2xl m-4 '>My property</div>
-      <div className=' flex flex-col-1'>
+     {loading?(<Loading/>):( <div className=' flex flex-col-1'>
 
       
-      {myProperty.map((data) => (
-        <Link to={`/partner/propertyDetail/${data._id}`}>       
-         <div key={data._id}className='grid-cols-2'>
-          <PartnerCard imgsrc={data.propertyImage[0]}>
-            <h1>{data.propertyName}</h1>
-            <p>{data.description}</p>
-          </PartnerCard>
-        </div>
-        </Link>
+{myProperty.map((data) => (
+  <Link key={data._id} to={`/partner/propertyDetail/${data._id}`}>       
+   <div className='grid-cols-2'>
+    <PartnerCard imgsrc={data.propertyImage[0]}>
+      <h1>{data.propertyName}</h1>
+      <p>{data.propertyFor}</p>
+    </PartnerCard>
+  </div>
+  </Link>
 
-      ))}
-      </div>
+))}
+</div>)}
     </>
   );
 };

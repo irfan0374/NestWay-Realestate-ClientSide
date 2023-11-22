@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes } from 'react-router-dom'
 import DetailLogin from '../Pages/partnerPages/LoginPage/detailLogin'
 import Registration from '../Pages/partnerPages/LoginPage/registration'
@@ -21,8 +21,6 @@ const PartnerRoute = () => {
         <Route path='/kycUpload' element={<KycUpload/>}/>
         <Route path='/partnerHome' element={<PartnerHome/>}/>
         <Route path='/propertyDetail/:propertyId' element={<DetailPage/>}/>
-
-
         
     </Routes>
     </>
@@ -30,3 +28,4 @@ const PartnerRoute = () => {
 }
 
 export default PartnerRoute
+

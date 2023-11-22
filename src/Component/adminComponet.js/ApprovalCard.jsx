@@ -47,7 +47,7 @@ const ApprovalCard = ({props}) => {
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                               {props.phone}
                             </p>
-         {props.adminApproved==="approve" || props.adminApproved==="reject" && (<div className="space-x-32 mt-6">
+         {props.adminApproved==="approve" || props.adminApproved==="reject" ||!props.adminApproved&& (<div className="space-x-32 mt-6">
 
 <button onClick={()=>handleApprove(props._id,"approve")} className="bg-black border-2 border-gray-700 rounded-lg text-white cursor-pointer font-semibold text-base md:text-sm py-2 px-6 transition duration-300 ease-in-out hover:shadow-md hover:-translate-y-2 focus:outline-none disabled:pointer-events-none disabled:bg-opacity-50" role="button">
     Accept

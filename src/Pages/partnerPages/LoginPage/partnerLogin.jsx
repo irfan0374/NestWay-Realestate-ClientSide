@@ -38,6 +38,7 @@ const PartnerLogin = () => {
         navigate("/partner/partnerHome");
         } 
         
+        
         // else if(res?.status==201){
         //   navigate("/partner/kycUpload",{state:res?.data?.partner._id})
         // }

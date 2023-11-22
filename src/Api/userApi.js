@@ -27,4 +27,36 @@ export const detailProperty=async(propertyId)=>{
     const data=await userAxiosInstance.get(`/propertyDetails/${propertyId}`)
     return data;
 }
+export const findUser=async(id)=>{
+    const data=await userAxiosInstance.get(`/findUser/${id}`)
 
+    return data;
+}
+export const updateProfile=async(values)=>{
+  
+    const data=await userAxiosInstance.patch('/updateProfile',{...values})
+    return data;
+}
+
+export const updataImage=async(image,id)=>{
+  
+    const data =await userAxiosInstance.patch('/updataImage',{image,id})
+    console.log(data)
+    return data
+}
+
+export const rentProperty=async()=>{
+
+    const data=await userAxiosInstance.get('/rentProperty')
+    
+    return data;
+}
+export const saleProperty=async()=>{
+    const data=await userAxiosInstance.get('/saleProperty')
+    return data;
+}
+export const DetailsProperty=async(propertyId)=>{
+    console.log('alo deatila')
+    const data=await userAxiosInstance.get(`/propertyDetails/${propertyId}`)
+    return data;
+}

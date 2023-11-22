@@ -13,11 +13,10 @@ const AdminLogin = () => {
   
   const onSubmit=async()=>{
     try{
-      console.log("onsubmit")
       const res=await adminLoginVerification(values)
       if(res?.status===200){
         const {token,userName}=res.data
-        localStorage.setItem("admintoken",token);
+        localStorage.setItem("adminToken",token);
         dispatch(
           adminLogin({
             token:token,

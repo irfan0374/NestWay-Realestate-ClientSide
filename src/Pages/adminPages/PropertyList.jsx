@@ -158,7 +158,7 @@ const PropertyList = () => {
                                                             </div>
 
                                                         )}
-                                                        {data.verificationStatus === "approve"||data.verificationStatus === ""&& (
+                                                        {data.verificationStatus==="null" ? (
                                                             < Link to={`/admin/propertyApproval/${data._id}`} >
                                                                 <button className="relative z-10 block bg-gray-800 rounded p-2 hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
                                                                     <svg className="h-2 w- text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -166,7 +166,7 @@ const PropertyList = () => {
                                                                     </svg>
                                                                 </button>
                                                             </Link>
-                                                        )}
+                                                        ):(<></>)}
 
 
                                                     </div>

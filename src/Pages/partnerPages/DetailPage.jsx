@@ -4,7 +4,9 @@ import { useParams } from 'react-router-dom'
 import { propertylist } from '../../Api/partnerApi'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import Navbar from '../../Component/userComponent.js/Navbar'
+import Navbar from '../../Component/partnerComponent.js/Navbar'
+import DetailePage from '../../Component/userComponent.js/DetailePage'
+import Loading from '../../Component/Loading/Loading'
 
 const DetailPage = () => {
     const navigate=useNavigate()
@@ -33,9 +35,9 @@ const DetailPage = () => {
 
   return (
    <>
-   <Navbar/>
+<Navbar/>
    {
-loading?(<p>loading</p>):(   <PropertyDetail myProperty={propertyDetail}/>
+loading?(<Loading/>):( <DetailePage property={propertyDetail}/>
 )
    }
    </>

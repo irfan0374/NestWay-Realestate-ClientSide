@@ -38,7 +38,7 @@ const PropertyApprovalCard = ({ props }) => {
 
                     <div className="max-w-sm border  h-60 mt-20 border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700">
 
-                        <img className="rounded-t-lg object-cover w-full h-full" src={props.propertyImage} alt="" />
+                        <img className="rounded-t-lg object-cover w-full h-full" src={props.propertyImage[0]} alt="" />
 
                         <div className="p-5 border rounded-b-lg bg-white">
 
@@ -46,9 +46,9 @@ const PropertyApprovalCard = ({ props }) => {
                                 {props.propertyName}
                             </p>
                             <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
-                                {props.description}
+                                {props.location}
                             </p>
-                            {props.verificationStatus === "" && (<div className="space-x-32 mt-6">
+                            {props.verificationStatus==="null" && (<div className="space-x-32 mt-6">
 
                                 <button onClick={() => handleApprove(props._id, "approve")} className="bg-black border-2 border-gray-700 rounded-lg text-white cursor-pointer font-semibold text-base md:text-sm py-2 px-6 transition duration-300 ease-in-out hover:shadow-md hover:-translate-y-2 focus:outline-none disabled:pointer-events-none disabled:bg-opacity-50" role="button">
                                     Accept

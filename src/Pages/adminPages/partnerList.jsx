@@ -148,16 +148,16 @@ const PartnerLists = () => {
                           <div className='flex space-x-2'>
                             {partner.adminApproved === "approve" ? (
                               <div className="flex items-center">
-                                <div className="h-2.5 w-2.5 rounded-full bg-green-500 mr-2" /> Approved
+                                <div className="h-2.5 w-2.5 rounded-full bg-green-500 mx-3" /> Approved
                               </div>
                             ) : (
                               <div className="flex items-center">
-                                <div className="h-2.5 w-2.5 rounded-full bg-red-700 mr-2" /> Not Approved
+                                <div className="h-2.5 w-2.5 rounded-full bg-red-700 " /> Not Approved
 
                               </div>
 
                             )}
-                            {partner.adminApproved === ""  && (
+               
                             < Link to={`/admin/kycApproval/${partner._id}`} >
                               <button className="relative z-10 block bg-gray-800 rounded p-2 hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
                                 <svg className="h-2 w- text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +165,7 @@ const PartnerLists = () => {
                                 </svg>
                               </button>
                             </Link>
-                            )}
+                            
 
 
                           </div>

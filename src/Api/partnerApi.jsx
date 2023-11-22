@@ -25,8 +25,10 @@ export async function partnerKycUpload({partnerId,kycImage}){
     
 }
 export async function addProperty(values){
+    console.log({...values})
     
     const data=await partnerAxiosInstance.post("/addProperty",{...values})
+  console.log(data,"addPropertyapi")
         return data;
     }
 
@@ -35,7 +37,6 @@ export async function listProperty(partnerId){
         const data=await partnerAxiosInstance.get(`/myProperty/${partnerId}`)
         return data;
 }
-
 export async function propertylist(propertyId){
     const data=await partnerAxiosInstance.get(`/propertyDetail/${propertyId}`)
     return data;

@@ -1,37 +1,31 @@
-import React, { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import PropertyDetails from '../../../Component/CommonComponent/PropertyDetail'
-import { detailProperty } from '../../../Api/userApi'
+import React,{useState,useEffect} from 'react'
 import Navbar from '../../../Component/userComponent.js/Navbar'
-const PropertyDetail = () => {
-    const[property,setProperty]=useState()
-    const {propertyId}=useParams()
+import DetailePage from '../../../Component/userComponent.js/DetailePage'
+import { DetailsProperty } from '../../../Api/userApi'
+import { useParams } from 'react-router-dom'
+import Loading from '../../../Component/Loading/Loading'
+
+const propertyDetail = () => {
     const [loading,setLoading]=useState(true)
-
-        useEffect(()=>{
-            detailProperty(propertyId)
-            .then((res)=>{
-          
-                setProperty(res?.data?.Property)
-               
-            }).catch((error)=>{
-                console.log(error.message)
-            }).finally(()=>{
-                setLoading(false)
-            })
-        },[propertyId])
-
+    const [detailProperty,setPropertyDetail]=useState()
+    const {id}=useParams()
+    useEffect(()=>{
+        DetailsProperty(id)
+        .then((res)=>{
+            setPropertyDetail(res?.data?.Property)
+        }).catch((error)=>{
+            console.log(error.message)
+        }).finally(()=>{
+            setLoading(false)
+        })
+    },[id])
   return (
-   <>
-   <Navbar/>
-   {loading?(<p>loading</p>):( 
-   <div>
-   <PropertyDetails myProperty={property}/>
-   </div>
-   )
-}
-   </>
+  <>
+  <Navbar/>
+  {loading ?(<Loading/>):(<DetailePage property={detailProperty}/>)
+  }
+  </>
   )
 }
 
-export default PropertyDetail
+export default propertyDetail

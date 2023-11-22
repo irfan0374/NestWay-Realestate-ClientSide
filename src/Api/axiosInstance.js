@@ -18,8 +18,8 @@ const createAxiosInstance=(baseURL)=>{
 
 const attachToken=(req,tokenName)=>{
     let authToken=localStorage.getItem(tokenName)
-    if(authToken){
-        req.headers.Authorization = `Bearer ${authToken}`;
+         if(authToken){
+        req.headers["Authorization"] = `Bearer ${authToken}`;
     }
     return req
 }
@@ -28,8 +28,7 @@ const attachToken=(req,tokenName)=>{
 
 export const userAxiosInstance=createAxiosInstance(userBaseUrl);
 userAxiosInstance.interceptors.request.use(async (req)=>{
-    
-    const modifiedReq=attachToken(req,"userToken");
+    const modifiedReq=attachToken(req,"usertoken");
     return modifiedReq;
 });
 
@@ -62,7 +61,7 @@ partnerAxiosInstance.interceptors.response.use(
 )
 
 // handle error
-const handleAxiosError=(error,navigate)=>{
+const handleAxiosError=(error)=>{
    
     const errorMessage=error.response ? error.response.data.message : "An error occured while request."
     if (error.response){

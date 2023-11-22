@@ -95,7 +95,7 @@ const PartnerSignup = () => {
             Phone No
           </label>
           <input
-            type="phone"
+            type="number"
             name='phone'
             id='phone'
             {...getFieldProps('phone')}
