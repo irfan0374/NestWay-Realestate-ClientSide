@@ -36,7 +36,7 @@ export async function propertylist(){
     return data;
 }
 export async function findProperty(propertyId){
-
+        console.log(propertyId,"properoty id")
     const data=await adminAxiosInstance.get(`/findProperty/${propertyId}`)
     return data;
 }

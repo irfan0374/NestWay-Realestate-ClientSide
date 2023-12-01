@@ -56,7 +56,26 @@ export const saleProperty=async()=>{
     return data;
 }
 export const DetailsProperty=async(propertyId)=>{
-    console.log('alo deatila')
+
     const data=await userAxiosInstance.get(`/propertyDetails/${propertyId}`)
     return data;
+}
+export const createSubscription=async(prices,User)=>{
+    console.log(prices,User)
+    const data=await userAxiosInstance.patch('/create-subscription',{prices,User})
+    return data
+}
+export const premiumUpdate=async(typeOfSub,user)=>{
+  
+    const data=await userAxiosInstance.patch(`/premiumUpdate/${user._id}`,{typeOfSub})
+    return data
+}
+export const findPartner=async(partnerId)=>{
+    const data=await userAxiosInstance.get(`/findPartner/${partnerId}`)
+    return data
+}
+export const sentMailToAgent=async(values)=>{
+    
+    const data=await userAxiosInstance.post('/sentMailtoAgent',{...values})
+    return data
 }

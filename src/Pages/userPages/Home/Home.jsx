@@ -2,7 +2,8 @@ import React from 'react'
 import Navbar from '../../../Component/userComponent.js/Navbar'
 import { useSelector } from 'react-redux/es/hooks/useSelector'
 import MainCard from '../../../Component/CommonComponent/MainCard'
-
+import GoogleButtonUser from '../../../assets/googleLogin/UserGoogleLogin'
+import GoogleSearch from '../../../Component/userComponent.js/googleSearch'
 const Homepage=()=>{
   const user=useSelector(state=>state.userReducer)
   
@@ -21,6 +22,7 @@ const Homepage=()=>{
   <div className="hero-content text-center text-neutral-content">
 
   </div>
+  <GoogleSearch/>
 </div>
 <div>
   

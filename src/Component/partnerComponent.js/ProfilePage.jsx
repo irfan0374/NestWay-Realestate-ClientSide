@@ -1,65 +1,69 @@
 import React, { useEffect, useState } from 'react'
-import { findUser } from '../../Api/userApi'
+import { findPartner } from '../../Api/partnerApi'
 import { useSelector } from 'react-redux'
 import { useFormik } from 'formik'
-import { updateProfile } from '../../Api/userApi'
-import { editProfile } from '../../schema/editProfile'
+import { partnerProfileUpdate } from '../../Api/partnerApi'
 import Loading from '../Loading/Loading'
-import {updataImage} from '../../Api/userApi'
+import { partnerImage } from '../../Api/partnerApi'
+import { toast } from 'react-toastify'
+import "react-toastify/dist/ReactToastify.css";
+
+
 
 const ProfilePage = () => {
-  const [profile, setProfile] = useState()
-  const [loading, setLoading] = useState(true)
+  const [profile, setProfile] = useState("")
+  const [loading, setLoading] = useState(false)
   const [loading1, setLoading1] = useState(false)
   const [loading2, setLoading2] = useState(false)
 
-  const [err,setErr]=useState(false)
-  const [image,setImage]=useState()
-  const user = useSelector((state) => state.userReducer.user)
-  const userId = user._id;
+  const [err, setErr] = useState(false)
+  const [image, setImage] = useState()
+  const partner = useSelector((state) => state.partnerReducer.partner)
+  const partnerId = partner._id
+
+
   useEffect(() => {
-    console.log("value");
-    findUser(userId).then((res) => {
-      setProfile(res?.data?.User)
+    console.log("helloo")
+    setLoading(true)
+    findPartner(partner).then((res) => {
+      setProfile(res?.data?.Partner)
+      setLoading(false)
     }).catch((error) => {
       console.log(error.message)
-    }).finally(() => {
       setLoading(false)
     })
-  }, [])
+  }, [image])
 
-  const { values, errors, handleChange, handleBlur, handleSubmit } = useFormik({
+  const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
     initialValues: {
       name: profile?.name,
       phone: profile?.phone,
     },
-    validationSchema: editProfile,
+
     onSubmit,
-    enableReinitialize:true 
+    enableReinitialize: true
   });
- 
-  
 
   async function onSubmit() {
     try {
       setLoading1(true)
-     const res=await updateProfile({...values,userId})
-     if(res?.status===200){
-      
-      setProfile(res?.data?.User)
-    }
-    setLoading1(false)
-
+      console.log("hi from submit")
+      const res = await partnerProfileUpdate({ ...values, partnerId })
+      if (res?.status === 200) {
+        setProfile(res?.data?.Partner)
+      }
+      setLoading1(false)
     } catch (error) {
       console.log(error.message)
       setLoading1(false)
     }
   };
-  const handleImage=(e)=>{
-    const file=e.target.files[0]
-    profileIMageToBase(file,userId)
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    profileImageToBase(file, partnerId)
   }
-  const profileIMageToBase = async (file, userId) => {
+
+  const profileImageToBase = async (file, partnerId) => {
     const reader = new FileReader();
 
     reader.onloadend = async () => {
@@ -68,62 +72,67 @@ const ProfilePage = () => {
 
       try {
         setLoading2(true)
-        const res = await updataImage(imageData, userId);
-        if(res.status===200){
-          
-          setProfile(res?.data?.User)
+        const res = await partnerImage(imageData, partnerId);
+        if (res.status === 200) {
+
+          setProfile(res?.data?.Partner)
           setLoading2(false)
         }
 
       } catch (error) {
         console.log(error.message);
+        setLoading2(false)
       }
     };
 
     reader.readAsDataURL(file);
   };
 
- 
+
   return (
     <>
 
 
-      {loading ? (<Loading/>) : (
+      {loading ? (<Loading />) : (
 
-        <div className=' flex flex-col  md:mx-28 container items-center'>
+
+
+
+        <div className=' flex flex-col  md:mx-20 container items-center'>
           <div className='w-1/3'>
 
 
             <div className="w-3/5 py-6 mx-32 flex items-center rounded-md">
               <label htmlFor="fileInput" className="cursor-pointer w-4/5">
-           
-                 
-                    {loading2 ? (
-                 
-                    <div className="rounded-full object-cover w-36 h-36">
 
-<div className="w-12 h-12 rounded-full border-8 border-solid border-blue-700 border-t-transparent animate-spin"></div>
 
-                    </div>
-                   
+                {loading2 ? (
 
-                    
-                    ):(<img
-                      src=
-                        {profile?.profile?profile.profile: "/src/assets/Account.png"}
-                      
-                      className={"rounded-full object-cover w-36 h-36"}
-                      alt=""
-                    />)}
-                  
+                  <div className="rounded-full object-cover w-36 h-36">
+
+                    <div className="w-12 h-12 rounded-full border-8 border-solid border-blue-700 border-t-transparent animate-spin"></div>
+
+                  </div>
+
+
+
+                ) : (<img
+                  src=
+                  {profile?.profile ? profile.profile : "/src/assets/Account.png"}
+
+                  className={"rounded-full object-cover w-36 h-36"}
+                  alt=""
+                />)}
+
               </label>
               <input
                 id="fileInput"
                 type="file"
                 accept="image/*"
                 style={{ display: "none" }}
-                  onChange={handleImage}
+                onChange={handleImage}
               />
+
             </div>
 
 
@@ -139,14 +148,15 @@ const ProfilePage = () => {
                   <input
                     type="name"
                     name="name"
-                   value={values?.name}
-                   onChange={handleChange}
-                   onBlur={handleBlur}
+                    value={values?.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=""
                     required=""
                   />
-            
+                  {errors.name && touched.name && (<p className='text-red-800'>{errors.name}</p>)}
+
 
                 </div>
                 <div className="relative z-0 w-full mb-6 group">
@@ -186,24 +196,25 @@ const ProfilePage = () => {
                   <input
                     type="number"
                     name="phone"
- 
-                   value={values.phone}
-                   onChange={handleChange}
-                   onBlur={handleBlur}
-                    className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
+
+                    value={values.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className="block number py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=""
                     required=""
                   />
-                   
+                  {errors.phone && touched.phone && (<p className='text-red-800'>{errors.phone}</p>)}
+
 
                 </div>
 
                 <div className='flex justify-center'>
-                  {loading1?(<div className="flex">
-            <span className="loading loading-spinner text-info"></span>
-            <span className="loading loading-spinner text-info"></span>
-            <span className="loading loading-spinner text-info"></span>
-            </div>):(<button
+                  {loading1 ? (<div className="flex">
+                    <span className="loading loading-spinner text-info"></span>
+                    <span className="loading loading-spinner text-info"></span>
+                    <span className="loading loading-spinner text-info"></span>
+                  </div>) : (<button
                     type="submit"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
                   >
@@ -214,7 +225,9 @@ const ProfilePage = () => {
 
             </div>
           </div>
-        </div>)
+        </div>
+
+      )
 
       }
     </>

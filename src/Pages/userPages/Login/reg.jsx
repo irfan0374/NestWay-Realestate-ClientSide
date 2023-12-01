@@ -36,7 +36,7 @@ const Reg = () => {
             user: User,
           })
         );
-        console.log("after the dispatch")
+
         toast.success(res?.data?.message)
         navigate("/")
       }

@@ -25,7 +25,7 @@ const   MainCard = ({ property }) => {
 
         <div className='flex items-center border-t-2 mx-3'>
           <VscAccount />
-          <Link to="#">
+          <Link to={`/AgentDetails/${property.partnerId._id}`}>
             <div className='mx-4 my-4'>
               {property.partnerId.name}
             </div>

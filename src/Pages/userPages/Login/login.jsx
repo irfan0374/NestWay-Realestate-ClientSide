@@ -33,6 +33,7 @@ export function Login() {
 
   const onSubmit = async () => {
     try {
+      console.log("hello")
       setLoading(true)
       const res = await userSignup(values)
       if (res?.status === 201) {

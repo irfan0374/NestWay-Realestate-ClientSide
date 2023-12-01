@@ -2,51 +2,75 @@ import React from 'react'
 import { CiLocationOn } from "react-icons/ci";
 import { TiTickOutline } from "react-icons/ti";
 import { MdCurrencyRupee } from "react-icons/md";
+import { Link } from 'react-router-dom';
 const DetailePage = ({ property }) => {
-    console.log(property, "ressssssssssssssss")
+
 
     return (
         <>
             <div className='flex justify-center'>
                 <div className=' flex  flex-col items-start  mx-4 bg-gray-200  w-full '>
                     <div className='m-8'>
+                        <div className='w-8 my-2 '>
+                            <div className="tooltip" data-tip="Edit Property">
+                                <button style={{ marginLeft: '8px' }}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" id="information">
+                                        <path fill="none" d="M0 0h24v24H0z"></path>
+                                        <path d="M11 18h2v-6h-2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-10h2V6h-2z"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                            <Link to={`/partner/propertyEdit/${property._id}`}>
+                                <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" id="edit">
+                                    <path d="M3.5,24h15A3.51,3.51,0,0,0,22,20.487V12.95a1,1,0,0,0-2,0v7.537A1.508,1.508,0,0,1,18.5,22H3.5A1.508,1.508,0,0,1,2,20.487V5.513A1.508,1.508,0,0,1,3.5,4H11a1,1,0,0,0,0-2H3.5A3.51,3.51,0,0,0,0,5.513V20.487A3.51,3.51,0,0,0,3.5,24Z"></path>
+                                    <path d="M9.455,10.544l-.789,3.614a1,1,0,0,0,.271.921,1.038,1.038,0,0,0,.92.269l3.606-.791a1,1,0,0,0,.494-.271l9.114-9.114a3,3,0,0,0,0-4.243,3.07,3.07,0,0,0-4.242,0l-9.1,9.123A1,1,0,0,0,9.455,10.544Zm10.788-8.2a1.022,1.022,0,0,1,1.414,0,1.009,1.009,0,0,1,0,1.413l-.707.707L19.536,3.05Zm-8.9,8.914,6.774-6.791,1.4,1.407-6.777,6.793-1.795.394Z"></path>
+                                </svg>
+                            </Link>
+
+                        </div>
+
                         <h1 className='text-5xl font-normal'>
                             {property.propertyName}
                         </h1>
-                        <div className='flex '>
-                            <h1 className='flex  font-bold text-2xl my-4'><span><MdCurrencyRupee />
 
-                            </span>{property.Price}</h1>
+                        <div className='flex '>
+                            <h1 className='flex font-bold text-2xl my-4'>
+                                <span><MdCurrencyRupee /></span>
+                                {property.Price}
+                            </h1>
                         </div>
-                        <div className='text-gray-400 bg-gray-700 w-12 rounded px-2'>
+                        <div className='text-gray-300 bg-gray-700 w-12 rounded px-2'>
                             {property.propertyFor}
                         </div>
                         <div className='my-2 flex space-x-2'>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.827 6.827" id="location"><path fill-rule="nonzero" d="M3.413 1.722c.239 0 .455.094.611.245a.821.821 0 0 1 0 1.184.875.875 0 0 1-.61.245.875.875 0 0 1-.611-.245.821.821 0 0 1 0-1.184.875.875 0 0 1 .61-.245zm.46.392a.659.659 0 0 0-.46-.185c-.18 0-.342.07-.46.185a.618.618 0 0 0 0 .89c.118.115.28.185.46.185s.343-.07.46-.184a.618.618 0 0 0 0-.891z"></path><path fill-rule="nonzero" d="M3.319 5.838c-.138-.252-.305-.538-.48-.836-.367-.63-.767-1.312-.985-1.842a1.577 1.577 0 0 1-.119-.6c0-.45.188-.856.492-1.15A1.7 1.7 0 0 1 3.413.933 1.7 1.7 0 0 1 4.6 1.41a1.596 1.596 0 0 1 .37 1.755c-.22.53-.615 1.208-.982 1.834-.174.298-.342.585-.48.84a.108.108 0 0 1-.189-.001zM3.025 4.9c.138.235.271.463.388.671.118-.21.252-.439.39-.675.363-.62.755-1.29.97-1.809a1.374 1.374 0 0 0 .105-.529c0-.392-.164-.747-.429-1.003a1.484 1.484 0 0 0-1.036-.416c-.404 0-.77.159-1.035.416a1.393 1.393 0 0 0-.327 1.528c.212.515.609 1.192.974 1.817z"></path><path fill="none" d="M0 0h6.827v6.827H0z"></path></svg>
-
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill-rule="evenodd" clip-rule="evenodd" image-rendering="optimizeQuality" shape-rendering="geometricPrecision" text-rendering="geometricPrecision" viewBox="0 0 6.827 6.827" id="location">
+                                <path fill-rule="nonzero" d="M3.413 1.722c.239 0 .455.094.611.245a.821.821 0 0 1 0 1.184.875.875 0 0 1-.61.245.875.875 0 0 1-.611-.245.821.821 0 0 1 0-1.184.875.875 0 0 1 .61-.245zm.46.392a.659.659 0 0 0-.46-.185c-.18 0-.342.07-.46.185a.618.618 0 0 0 0 .89c.118.115.28.185.46.185s.343-.07.46-.184a.618.618 0 0 0 0-.891z"></path>
+                                <path fill-rule="nonzero" d="M3.319 5.838c-.138-.252-.305-.538-.48-.836-.367-.63-.767-1.312-.985-1.842a1.577 1.577 0 0 1-.119-.6c0-.45.188-.856.492-1.15A1.7 1.7 0 0 1 3.413.933 1.7 1.7 0 0 1 4.6 1.41a1.596 1.596 0 0 1 .37 1.755c-.22.53-.615 1.208-.982 1.834-.174.298-.342.585-.48.84a.108.108 0 0 1-.189-.001zM3.025 4.9c.138.235.271.463.388.671.118-.21.252-.439.39-.675.363-.62.755-1.29.97-1.809a1.374 1.374 0 0 0 .105-.529c0-.392-.164-.747-.429-1.003a1.484 1.484 0 0 0-1.036-.416c-.404 0-.77.159-1.035.416a1.393 1.393 0 0 0-.327 1.528c.212.515.609 1.192.974 1.817z"></path>
+                            </svg>
                             <h1 className='m-y-2'>{property.location}</h1>
                         </div>
                     </div>
 
+
                     <div className='w-full flex '>
 
                         <div className='w-1/2 mr-2'>
-                            <img className='object-cover w-full rounded-md h-[410px]' src={property.propertyImage[0]} alt=" 1 Image not found" />
+                            <img className='object-cover w-full rounded-md h-[410px]' src={property.propertyImage[0]?property.propertyImage[0]:"/src/assets/noBuliding.png"} alt=" 1 Image not found" />
 
                         </div>
 
                         <div className='w-1/2 grid grid-cols-2 gap-2'>
 
-                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[1]} alt=" 1 Image not found" />
+                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[1]?property.propertyImage[1]:"/src/assets/noBuliding.png"} alt=" 1 Image not found" />
 
 
-                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[2]} alt=" 1 Image not found" />
+                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[2]?property.propertyImage[2]:"/src/assets/noBuliding.png"} alt=" 1 Image not found" />
 
 
-                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[3]} alt=" 1 Image not found" />
+                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[3]?property.propertyImage[3]:"/src/assets/noBuliding.png"} alt=" 1 Image not found" />
 
 
-                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[4]} alt=" 1 Image not found" />
+                            <img className='object-cover w-full rounded-md  h-[200px]' src={property.propertyImage[4]?property.propertyImage[4]:"/src/assets/noBuliding.png"} alt=" Image not found" />
                         </div>
                     </div>
                 </div>
@@ -93,13 +117,30 @@ const DetailePage = ({ property }) => {
                                 BHK
                             </div>
                         </div>
+                        <div className='flex flex-col items-center'>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 48 48" id="community"><path d="M15.5 22.5c0-3.03-2.47-5.5-5.5-5.5s-5.5 2.47-5.5 5.5S6.97 28 10 28s5.5-2.47 5.5-5.5zm-8 0a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1-5 0zm-5 12v4c0 .83.67 1.5 1.5 1.5h12c.83 0 1.5-.67 1.5-1.5v-4c0-3.03-2.47-5.5-5.5-5.5H8a5.51 5.51 0 0 0-5.5 5.5zm3 0A2.5 2.5 0 0 1 8 32h4a2.5 2.5 0 0 1 2.5 2.5V37h-9v-2.5zM38 17c-3.03 0-5.5 2.47-5.5 5.5S34.97 28 38 28s5.5-2.47 5.5-5.5S41.03 17 38 17zm0 8a2.5 2.5 0 0 1 0-5 2.5 2.5 0 0 1 0 5zm2 4h-4a5.51 5.51 0 0 0-5.5 5.5v4c0 .83.67 1.5 1.5 1.5h12c.83 0 1.5-.67 1.5-1.5v-4c0-3.03-2.47-5.5-5.5-5.5zm2.5 8h-9v-2.5A2.5 2.5 0 0 1 36 32h4a2.5 2.5 0 0 1 2.5 2.5V37zm-13-23.5c0-3.03-2.47-5.5-5.5-5.5s-5.5 2.47-5.5 5.5S20.97 19 24 19s5.5-2.47 5.5-5.5zm-8 0a2.5 2.5 0 0 1 5 0 2.5 2.5 0 0 1-5 0zM30 31c.83 0 1.5-.67 1.5-1.5v-4c0-3.03-2.47-5.5-5.5-5.5h-4a5.51 5.51 0 0 0-5.5 5.5v4c0 .83.67 1.5 1.5 1.5h12zm-10.5-5.5A2.5 2.5 0 0 1 22 23h4a2.5 2.5 0 0 1 2.5 2.5V28h-9v-2.5z"></path></svg>
+                            <span className='font-bold'> {property?.personCanStay}</span>
+                            <div className='flex-none'>
+                                person can stay
+                            </div>
+                        </div>
+                        <div className='flex flex-col items-center'>
+                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="27" enable-background="new 0 0 60 60" viewBox="0 0 60 60" id="ruler"><path d="M5.1,55c0,0.6,0.4,1,1,1h42.7c0.4,0,0.8-0.2,0.9-0.6s0.1-0.8-0.2-1.1L6.8,11.6c-0.3-0.3-0.7-0.4-1.1-0.2
+	c-0.4,0.2-0.6,0.5-0.6,0.9V55z M46.3,54H7.1v-0.8h2.5c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h1.1c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1V46
+	h2.5c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h1.1c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h2.5c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h1.1
+	c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h2.5c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h1.1c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h2.5
+	c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-1.6h1.1c0.6,0,1-0.4,1-1s-0.4-1-1-1H7.1v-4L46.3,54z"></path><path d="M14.1 48h15.3c.4 0 .8-.2.9-.6s.1-.8-.2-1.1L14.8 31c-.3-.3-.7-.4-1.1-.2-.4.2-.6.5-.6.9V47C13.1 47.6 13.5 48 14.1 48zM15.1 34.1L27 46H15.1V34.1zM20.8 6.3c-.4-.4-1-.4-1.4 0l-6 6c-.4.4-.4 1 0 1.4l2.6 2.6c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l3.2 3.2c0 0 0 0 0 0s0 0 0 0l2.6 2.6c.2.2.5.3.7.3s.5-.1.7-.3l6-6c.4-.4.4-1 0-1.4L20.8 6.3zM48.1 45.6l-1.2-1.2 1.8-1.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0L45.4 43l-1.8-1.8.8-.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0l-.8.8L40.5 38l1.8-1.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0L39 36.6l-1.8-1.8L38 34c.4-.4.4-1 0-1.4s-1-.4-1.4 0l-.8.8-1.8-1.8 1.8-1.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0l-1.8 1.8-1.8-1.8.8-.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0L29.4 27l-1.8-1.8 1.8-1.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0l-1.8 1.8L24.5 22l.8-.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0L23 20.6l-1.8-1.8 1.8-1.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0l-1.8 1.8-1.8-1.8.8-.8c.4-.4.4-1 0-1.4s-1-.4-1.4 0l-.8.8L15.5 13 20 8.4 52.6 41 48.1 45.6z"></path></svg>                            <span className='font-bold'> {property?.personCanStay}</span>
+                            <div className='flex-none'>
+                               square feet
+                            </div>
+                        </div>
 
                     </div>
                 </div>
             </div>
 
 
-            <div className='flex justify-center  w-2/3 bg-gray-200  mx-4 my-3 rounded-md'>
+            <div className='flex justify-center  w-2/3 bg-gray-100  mx-4 my-3 rounded-md'>
 
                 <div className=' w-5/6 mt-16 space-y-8'>
 
@@ -162,7 +203,7 @@ const DetailePage = ({ property }) => {
                             <div className='flex flex-col'>
                                 {property.features.map((data, index) => (
                                     <div key={index} className='flex items-center space-y-3'>
-                                        <TiTickOutline />
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="40" height="30" viewBox="0 0 64 64" id="check"><path fill="#222" d="M40.54 57.4H23.46a4.75 4.75 0 0 1-3.38-1.4L8 43.92a4.75 4.75 0 0 1-1.4-3.38V23.46A4.75 4.75 0 0 1 8 20.08L20.08 8a4.75 4.75 0 0 1 3.38-1.4h17.08A4.75 4.75 0 0 1 43.92 8L56 20.08a4.75 4.75 0 0 1 1.4 3.38v17.08a4.75 4.75 0 0 1-1.4 3.38L43.92 56a4.75 4.75 0 0 1-3.38 1.4ZM23.46 8.6a2.77 2.77 0 0 0-2 .82L9.42 21.49a2.77 2.77 0 0 0-.82 2v17.05a2.77 2.77 0 0 0 .82 2l12.07 12.04a2.77 2.77 0 0 0 2 .82h17.05a2.77 2.77 0 0 0 2-.82l12.04-12.07a2.77 2.77 0 0 0 .82-2V23.46a2.77 2.77 0 0 0-.82-2L42.51 9.42a2.77 2.77 0 0 0-2-.82Z"></path><path fill="#222" d="M28.58 40.56a1 1 0 0 1-.76-.38l-6.18-8A1 1 0 1 1 23.19 31l5.45 7c1.86-2 6.7-7.24 12.29-12.31a1 1 0 0 1 1.41.06 1 1 0 0 1-.06 1.42c-7 6.39-12.89 13-13 13a1 1 0 0 1-.7.39Z"></path></svg>
                                         <span className='text-lg'>{data}</span>
                                     </div>
                                 ))}

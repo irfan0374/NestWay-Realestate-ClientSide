@@ -41,3 +41,38 @@ export async function propertylist(propertyId){
     const data=await partnerAxiosInstance.get(`/propertyDetail/${propertyId}`)
     return data;
 }
+
+export async function partnerImage(imageData,partnerId){
+    const data=await partnerAxiosInstance.patch(`/partnerImage`,{imageData,partnerId})
+    console.log(data)
+    return data
+}
+export async function findPartner(){
+    
+    const data=await partnerAxiosInstance.get('/findPartner')
+    return data
+}
+export async function partnerProfileUpdate(values){
+  
+    const data=await partnerAxiosInstance.patch('/updateProfile',{...values})
+    return data
+}
+export async function  descriptionUpdate(values){
+    const data=await partnerAxiosInstance.patch('/addDescription',{...values})
+    return data;
+}
+
+export async function findProperty(partnerid){
+    const data=await partnerAxiosInstance.get(`/findProperty/${partnerid}`)
+    return data
+}
+export async function updateProperty(values,propertyId){
+
+    const data=await partnerAxiosInstance.patch(`/updateProperty/${propertyId}`,{...values})
+    return data
+}
+export async function deleteImage(imgsrc,propertyId){
+    console.log(imgsrc,propertyId,'api imgsrc')
+    const data=await partnerAxiosInstance.patch(`/deletePropertyImage/${propertyId}`,{imgsrc})
+    return data
+}

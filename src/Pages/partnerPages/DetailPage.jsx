@@ -11,8 +11,11 @@ import Loading from '../../Component/Loading/Loading'
 const DetailPage = () => {
     const navigate=useNavigate()
     const [propertyDetail,setPropertyDetail]=useState()
+
     const {propertyId}=useParams()
+
     const [loading,setLoading]=useState(true)
+
     
    useEffect(()=>{
     propertylist(propertyId)

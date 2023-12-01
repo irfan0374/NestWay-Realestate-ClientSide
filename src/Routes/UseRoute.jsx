@@ -11,7 +11,10 @@ import Profile from "../Pages/userPages/Home/Profile"
 import SentMailCard from '../Component/userComponent.js/sentMailCard';
 import RentPage from '../Pages/userPages/Home/RentPage';
 import SalePage from '../Pages/userPages/Home/SalePage';
-
+import PremiumPage from '../Component/userComponent.js/PremiumPage';
+import '@stripe/stripe-js'
+import Status from '../Component/userComponent.js/Status';
+import AgentDetails from '../Pages/userPages/Home/AgentDetails';
 const UseRoute = () => {
   return (
     <Routes>
@@ -21,13 +24,12 @@ const UseRoute = () => {
       <Route path='/propertyList' element={<PropertyPage />} />
       <Route path='/propertyDetails/:id' element={<PropertyDetail />} />
       <Route path='/account' element={<UserProtect><Profile/></UserProtect>} />
-      <Route path='/rent' element={<RentPage/>} />
-      <Route path='/sale' element={<SalePage/>} />
-
-
-
-
-      <Route path='/sample' element={<SentMailCard/>} />
+      <Route path='/rent' element={<UserPublic><RentPage/></UserPublic>} />
+      <Route path='/sale' element={<UserPublic><SalePage/></UserPublic>} />
+      <Route path='/subscription' element={<UserPublic><PremiumPage/></UserPublic>} />
+      <Route path='/status' element={<UserProtect><Status/></UserProtect>} />
+      <Route path='/contactToAgent' element={<SentMailCard/>} />
+      <Route path='/AgentDetails/:partnerId' element={<AgentDetails/>} />
     </Routes>
   );
 };

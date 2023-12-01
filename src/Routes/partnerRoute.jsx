@@ -9,6 +9,8 @@ import PartnerPublic from './partnerPrivate/PartnerPublic'
 import PartnerHome from '../Pages/partnerPages/PartnerHome'
 import KycUpload from '../Pages/partnerPages/LoginPage/KycUpload'
 import DetailPage from '../Pages/partnerPages/DetailPage'
+import PartnerProfilePage from '../Pages/partnerPages/PartnerProfile'
+import PropertyEdit from '../Component/partnerComponent.js/PropertyEdit'
 
 const PartnerRoute = () => {
   return (
@@ -21,6 +23,8 @@ const PartnerRoute = () => {
         <Route path='/kycUpload' element={<KycUpload/>}/>
         <Route path='/partnerHome' element={<PartnerHome/>}/>
         <Route path='/propertyDetail/:propertyId' element={<DetailPage/>}/>
+        <Route path='/partnerProfile' element={<PartnerProfilePage/>}/>
+        <Route path='/propertyEdit/:propertyId' element={<PropertyEdit/>}/>
         
     </Routes>
     </>

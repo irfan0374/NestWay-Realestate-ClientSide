@@ -17,6 +17,7 @@ const GoogleButtonUser = () => {
   const responseMessage = async (response) => {
     try {
         console.log("hwlolo")
+        console.log( jwtDecode(response.credential))
       const user = jwtDecode(response.credential);
       const res = await userLoginWithGoogle(user.email);
       if (res?.status === 200) {

@@ -1,12 +1,37 @@
 import React from 'react'
 import { VscAccount } from "react-icons/vsc";
+import { useSelector } from 'react-redux';
+import { useFormik } from 'formik';
+import { sentMailToAgent } from '../../Api/userApi';
 
+const sentMailCard = ({partnerId}) => {
+  const {user}=useSelector((state)=>state.userReducer)
 
-const sentMailCard = () => {
+  const {values,error,handleSubmit,getFieldProps}=useFormik({
+    initialValues:{
+      name:user?.name||"",
+      email:user?.email||"",
+      phone:user?.phone||"",
+      description:"I saw your property on seven Sky and  "
+    },
+    onSubmit,
+    enableReinitialize:true
+  })
+  async function onSubmit(){
+    try{
+       sentMailToAgent({...values,partnerId}).then((res)=>{
+       }).catch((error)=>{
+        console.log(error.message)
+       })
+
+    }catch(error){
+      console.log(error.message)
+    }
+  }
+
   return (
    <>
-   {/* Open the modal using document.getElementById('ID').showModal() method */}
-<button className="btn" onClick={()=>document.getElementById('my_modal_1').showModal()}>open modal</button>
+
 <dialog id="my_modal_1" className="modal">
   <div className="modal-box">
   <form method="dialog">
@@ -26,7 +51,7 @@ const sentMailCard = () => {
         </div>
    
 <div >
-    <form action="">
+    <form onSubmit={handleSubmit} >
         <div className='space-y-4'>
 
      
@@ -34,7 +59,7 @@ const sentMailCard = () => {
                   type="text"
                   name="name"
                   id="name"
-               
+                    {...getFieldProps("name")}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Enter your Name"
                   required=""
@@ -43,16 +68,16 @@ const sentMailCard = () => {
                   type="text"
                   name="email"
                   id="email"
-               
+                  {...getFieldProps("email")}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Enter your Email"
                   required=""
                 />
 <input
-                  type="number"
-                  name="number"
-                  id="number"
-               
+                  type="phone"
+                  name="phone"
+                  id="phone"
+                  {...getFieldProps("phone")}
                   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
                   placeholder="Phone"
                   required=""
@@ -62,13 +87,13 @@ const sentMailCard = () => {
   name="description"
   id="description"
   rows="4"
-  value={`I saw your profile on seven Sky and i wanted to see id i an get some help`}
+ {...getFieldProps("description")}
   className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
   placeholder="Enter your phone number including the country code."
   required=""
 ></textarea>
 <div className='my-4'> 
-    <button className='w-full border rounded-md bg-gray-400 h-9'>submit</button>
+    <button  type="submit"  className='w-full border rounded-md bg-gray-400 h-9'>Send </button>
 </div>
 </div>
 </form>
