@@ -15,6 +15,7 @@ import PremiumPage from '../Component/userComponent.js/PremiumPage';
 import '@stripe/stripe-js'
 import Status from '../Component/userComponent.js/Status';
 import AgentDetails from '../Pages/userPages/Home/AgentDetails';
+import ChatPage from '../Pages/userPages/chatPage/ChatPage';
 const UseRoute = () => {
   return (
     <Routes>
@@ -30,6 +31,7 @@ const UseRoute = () => {
       <Route path='/status' element={<UserProtect><Status/></UserProtect>} />
       <Route path='/contactToAgent' element={<SentMailCard/>} />
       <Route path='/AgentDetails/:partnerId' element={<AgentDetails/>} />
+      <Route path='/chat/:partnerId' element={<ChatPage/>} />
     </Routes>
   );
 };

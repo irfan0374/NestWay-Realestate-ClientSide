@@ -25,7 +25,7 @@ const AgentCard = ({ partnerdata }) => {
                                 <button className="relative rounded-md inline-block px-6 py-2  font-bold text-white transition-all duration-300 ease-in-out border-2 border-gray-400 hover:text-black focus:outline-none active:top-1 bg-gradient-to-r from-transparent to-gray-500 hover:from-transparent hover:to-white" onClick={() => document.getElementById('my_modal_1').showModal()}>
                                     Send Email
                                 </button>
-                                <Link
+                                <Link to={`/chat/${partnerdata?._id}`}
                                     className="inline-flex items-center px-4 py-2 mt-2 font-semibold tracking-tighter text-black transition duration-500 ease-in-out transform bg-transparent border rounded-lg text-md md:mt-0 hover:text-white hover:bg-black focus:shadow-outline">
                                     <div className="flex text-lg tracking-tighter w-20">
                                         <span className="justify-center text-md tracking-wider mx-3 flex ">Chat <span className='mx-2'><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" data-name="Layer 2" viewBox="0 0 32 32" id="chat"><path d="M16 4.5c-7.17 0-13 4.43-13 9.88C3 18 5.58 21.3 9.75 23a6.88 6.88 0 0 1-1.17 3.85.52.52 0 0 0 0 .56.51.51 0 0 0 .42.22h.1c.18 0 4.34-.89 6.67-3.4C23 24.34 29 19.88 29 14.38S23.17 4.5 16 4.5Zm0 18.75h-.42a.49.49 0 0 0-.41.17 11.59 11.59 0 0 1-5.16 3 8 8 0 0 0 .73-3.71.51.51 0 0 0-.32-.45C6.46 20.68 4 17.67 4 14.38 4 9.48 9.38 5.5 16 5.5s12 4 12 8.88-5.38 8.87-12 8.87Z"></path></svg></span></span>

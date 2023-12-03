@@ -18,7 +18,7 @@ const SalePage = () => {
   return (
     <>
   <Navbar/>
-  <div className=' text-2xl font-normal m-12 '>sales</div>
+  <div className=' text-2xl font-normal m-12 h- '>sales</div>
   {loading?(<Loading/>):(
     <div className="mx-auto grid grid-cols-4">
     {property.map((data)=>(

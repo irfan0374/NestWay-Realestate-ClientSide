@@ -11,6 +11,7 @@ export const otpVerification= async (otp,otpId,userId)=>{
     return data;
 }
 export const userlogin=async(loginData)=>{
+    
         const data=await userAxiosInstance.post('/userLogin',loginData)
         return data;
 };
