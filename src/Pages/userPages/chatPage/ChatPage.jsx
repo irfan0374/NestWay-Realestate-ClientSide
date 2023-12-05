@@ -1,32 +1,25 @@
 import React, { useEffect, useState } from 'react'
-import ChatNav from '../../../Component/chatComponet/ChatNav'
-import MainPage from '../../../Component/chatComponet/MainPage'
+import ChatNav from '../../../Component/userComponent.js/chatComponet/ChatNav'
+import MainPage from '../../../Component/userComponent.js/chatComponet/MainPage'
 import { useParams } from 'react-router-dom'
-import { findPartner } from '../../../Api/userApi'
+
 import Loading from '../../../Component/Loading/Loading'
+import { useSelector } from 'react-redux'
+
 
 const ChatPage = () => {
-    const {partnerId}=useParams()
-    const [partner,setpartner]=useState()
-    const [loading,setLoading]=useState(false)
-    useEffect(()=>{
-        setLoading(true)
-        findPartner(partnerId).then((res)=>{
-            setLoading(false)
-            setpartner(res?.data?.Partner)
-            
-        }).catch((error)=>{
-            setLoading(false)
+    const { partnerId } = useParams()
+    const {user}=useSelector((state)=>state.userReducer)
+   const userId=user._id
+   const [loading, setLoading] = useState(false)
 
-            console.log(error.message)
-        })
 
-    },[partnerId])
-  return (
-    <>
-    {loading?(<Loading/>):(  <> <ChatNav/> <MainPage data={partner}/></>)}
-    </>
-  )
+
+    return (
+        <>
+            {loading ? (<Loading />) : (<> <ChatNav /> <MainPage /></>)}
+        </>
+    )
 }
 
 export default ChatPage

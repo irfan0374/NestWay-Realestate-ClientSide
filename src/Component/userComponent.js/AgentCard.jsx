@@ -1,9 +1,16 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Navbar from "./Navbar"
 import { Link } from 'react-router-dom'
+import { createChat } from '../../Api/chatAxios'
+import { useSelector } from 'react-redux'
 
 
 const AgentCard = ({ partnerdata }) => {
+ const {user}=useSelector((state)=>state.userReducer)
+ 
+    useEffect(()=>{
+        createChat(user._id,partnerdata?._id)
+       },[])
     console.log(partnerdata, "partnerDataaaaa from props")
     return (
         <>

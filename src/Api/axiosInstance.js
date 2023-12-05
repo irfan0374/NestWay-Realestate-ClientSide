@@ -5,6 +5,8 @@ const baseURL=import.meta.env.VITE_BASE_URL
 const userBaseUrl=baseURL;
 const adminBaseUrl=`${baseURL}/admin`;
 const partnerBaseUrl=`${baseURL}/partner`;
+const chatBaseUrl =`${baseURL}/chat`
+const messageBaseUrl =`${baseURL}/message`
 
 const createAxiosInstance=(baseURL)=>{
     const instance=axios.create({
@@ -24,7 +26,12 @@ const attachToken=(req,tokenName)=>{
     return req
 }
 
+export const chatAxiosInstance = createAxiosInstance(chatBaseUrl)
+export const messageAxiosInstance = createAxiosInstance(messageBaseUrl)
+
 // request interceptor
+
+
 
 export const userAxiosInstance=createAxiosInstance(userBaseUrl);
 userAxiosInstance.interceptors.request.use(async (req)=>{

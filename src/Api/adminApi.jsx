@@ -45,4 +45,7 @@ export async function propertyApproval(propertyId,status){
     console.log(data,"data")
     return data;
 }
-
+export async function premiumUser(){
+    const data=await adminAxiosInstance.get('/premiumUser')
+    return data
+}

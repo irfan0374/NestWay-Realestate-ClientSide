@@ -11,7 +11,7 @@ import KycUpload from '../Pages/partnerPages/LoginPage/KycUpload'
 import DetailPage from '../Pages/partnerPages/DetailPage'
 import PartnerProfilePage from '../Pages/partnerPages/PartnerProfile'
 import PropertyEdit from '../Component/partnerComponent.js/PropertyEdit'
-
+import Chat from '../Pages/partnerPages/ChatPage/Chat'
 const PartnerRoute = () => {
   return (
     <>
@@ -25,6 +25,7 @@ const PartnerRoute = () => {
         <Route path='/propertyDetail/:propertyId' element={<DetailPage/>}/>
         <Route path='/partnerProfile' element={<PartnerProfilePage/>}/>
         <Route path='/propertyEdit/:propertyId' element={<PropertyEdit/>}/>
+        <Route path='/chat' element={<Chat/>}/>
         
     </Routes>
     </>
