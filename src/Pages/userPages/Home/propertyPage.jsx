@@ -1,5 +1,5 @@
 import {React,useState,useEffect} from 'react'
-import Navbar from '../../../Component/userComponent.js/Navbar'
+import Navbar2 from '../../../Component/userComponent.js/Navbar2'
 import Card from '../../../Component/CommonComponent/Card'
 import { listProperty } from '../../../Api/userApi'
 
@@ -23,7 +23,7 @@ const propertyPage = () => {
     console.log(property)
   return (
     <>
-    <Navbar/>
+    <Navba2r/>
     {property.map((data)=>(
     loading?(<p>loading</p>):(   
 

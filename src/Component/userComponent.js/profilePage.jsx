@@ -9,7 +9,7 @@ import {updataImage} from '../../Api/userApi'
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState()
-  const [loading, setLoading] = useState(true)
+  const [loading, setLoading] = useState(false)
   const [loading1, setLoading1] = useState(false)
   const [loading2, setLoading2] = useState(false)
 
@@ -18,13 +18,14 @@ const ProfilePage = () => {
   const user = useSelector((state) => state.userReducer.user)
   const userId = user._id;
   useEffect(() => {
-    console.log("value");
-    findUser(userId).then((res) => {
+    console.log("helll")
+setLoading(true)
+findUser(userId).then((res) => {
+      setLoading(false)
       setProfile(res?.data?.User)
     }).catch((error) => {
-      console.log(error.message)
-    }).finally(() => {
       setLoading(false)
+      console.log(error.message)
     })
   }, [])
 
@@ -110,7 +111,7 @@ const ProfilePage = () => {
                     
                     ):(<img
                       src=
-                        {profile?.profile?profile.profile: "/src/assets/Account.png"}
+                        {profile?.profile?profile?.profile: "/src/assets/Account.png"}
                       
                       className={"rounded-full object-cover w-36 h-36"}
                       alt=""
@@ -170,7 +171,7 @@ const ProfilePage = () => {
                     type="email"
                     name="floating_email"
                     id="floating_email"
-                    defaultValue={profile.email}
+                    defaultValue={profile?.email}
                     className="block py-2.5 px-0 w-full text-sm text-gray-400 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=""
                     required=""
@@ -187,7 +188,7 @@ const ProfilePage = () => {
                     type="number"
                     name="phone"
  
-                   value={values.phone}
+                   value={values?.phone}
                    onChange={handleChange}
                    onBlur={handleBlur}
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"

@@ -8,6 +8,7 @@ import AdminPublic from './AdminPrivate/AdminPublic'
 import KycUpload from '../Pages/adminPages/kycUpload'
 import PropertyList from '../Pages/adminPages/PropertyList'
 import PropertyApproval from '../Pages/adminPages/PropertyApproval'
+import PremiumUserPage from '../Pages/adminPages/premiumUser'
 const   AdminRoute = () => {
   return (
     <>
@@ -18,6 +19,7 @@ const   AdminRoute = () => {
         <Route path='/kycApproval/:partnerId' element={<AdminProtect><KycUpload/></AdminProtect>}/>
         <Route path='/propertylist' element={<AdminProtect><PropertyList/></AdminProtect>}/>
         <Route path='/propertyApproval/:propertyId' element={<AdminProtect><PropertyApproval/></AdminProtect>}/>
+        <Route path='/premiumUser' element={<AdminProtect><PremiumUserPage/></AdminProtect>}/>
     </Routes>
     </>
   )

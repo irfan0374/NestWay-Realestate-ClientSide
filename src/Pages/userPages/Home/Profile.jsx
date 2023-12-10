@@ -8,12 +8,9 @@ import {
   TabPanel,
 } from "@material-tailwind/react";
 import ChangePassword from '../../../Component/userComponent.js/changePassword';
-import {
+import {UserCircleIcon,} from "@heroicons/react/24/solid";
+import Navbar2 from '../../../Component/userComponent.js/Navbar2';
 
-  UserCircleIcon,
-
-} from "@heroicons/react/24/solid";
-import axios from "axios";
 
 ;
 const UserProfile = () => {
@@ -44,6 +41,7 @@ const UserProfile = () => {
   ];
   return (
     <>
+    <Navbar2/>
 <div className='my-4'>
 
 

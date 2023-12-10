@@ -14,15 +14,11 @@ export async function loginVerification(LoginData){
     return data
 } 
 export async function partnerKycUpload({partnerId,kycImage}){
-    try{
             
         const data=await partnerAxiosInstance.patch('/partnerKycUpload',{partnerId,kycImage})
         return data;
 
-    }catch(error){
-        console.log(error.message)
-    }
-    
+  
 }
 export async function addProperty(values){
     console.log({...values})
@@ -72,7 +68,11 @@ export async function updateProperty(values,propertyId){
     return data
 }
 export async function deleteImage(imgsrc,propertyId){
-    console.log(imgsrc,propertyId,'api imgsrc')
+    console.log(imgsrc,propertyId,"propppppppppppppppppp")
     const data=await partnerAxiosInstance.patch(`/deletePropertyImage/${propertyId}`,{imgsrc})
+    return data
+}
+export async function getTheBuyerDetails(partnerId){
+    const data=await partnerAxiosInstance.get(`/fetchBuyers/${partnerId}`)
     return data
 }

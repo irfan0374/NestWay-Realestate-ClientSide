@@ -24,8 +24,8 @@ const GoogleSearch = () => {
   }, []);
 
   return (
-    <div>
-      <div id="geocoder-map"  />
+    <div className='-z-10'>
+      <div id="geocoder-map" className='-z-10'  />
     </div>
   );
 };

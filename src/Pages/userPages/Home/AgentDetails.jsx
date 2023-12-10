@@ -1,8 +1,8 @@
 import React, { useEffect,useState } from 'react'
 import AgentCard from '../../../Component/userComponent.js/AgentCard'
-import Navbar from '../../../Component/userComponent.js/Navbar'
+import Navbar2 from '../../../Component/userComponent.js/Navbar2'
 import SentMailCard from '../../../Component/userComponent.js/sentMailCard'
-import { findPartner } from '../../../Api/userApi'
+import { findPartner, findUser } from '../../../Api/userApi'
 import { useParams } from 'react-router-dom'
 import Loading from '../../../Component/Loading/Loading'
 
@@ -12,6 +12,8 @@ const AgentDetails = () => {
   const { partnerId } = useParams()
   const [partnerdata, setPartnerData] = useState()
   const [loading, setLoading] = useState(false)
+
+
 
   useEffect(() => {
     setLoading(true)
@@ -25,7 +27,9 @@ const AgentDetails = () => {
   }, [partnerId])
   return (
     <>
-      <Navbar />
+    <div className='mb-28'>
+      <Navbar2 />
+      </div>
       {loading ? (<Loading />) : (
         <div>
           <AgentCard partnerdata={partnerdata} />

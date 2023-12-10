@@ -2,14 +2,14 @@ import React, { useState, useRef, useEffect } from 'react'
 import { useFormik } from 'formik'
 import { useNavigate, Link, Form } from 'react-router-dom'
 import { toast } from 'react-toastify'
-import { loginSchema } from '../../../schema/loginValidation'
-import { userlogin } from '../../../Api/userApi'
+import { loginSchema } from '../../schema/loginValidation'
+import { userlogin } from '../../Api/userApi'
 import { useDispatch } from "react-redux";
-import { userLogin } from '../../../Redux/Slice/userSlice'
-import GoogleButtonUser from "../../../assets/googleLogin/UserGoogleLogin";
+import { userLogin } from '../../Redux/Slice/userSlice'
+import GoogleButtonUser from "../../assets/googleLogin/UserGoogleLogin";
 
 
-const Reg = () => {
+const LoginPage = () => {
   const navigate=useNavigate()
   const dispatch=useDispatch()
 
@@ -139,4 +139,4 @@ const Reg = () => {
   )
 }
 
-export default Reg
+export default LoginPage

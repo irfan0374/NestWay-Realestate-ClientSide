@@ -61,6 +61,9 @@ const PropertyEdit = () => {
         const maxlimit=5
         const file = Array.from(allImage)
         const sliceFiles=Array.from(file).slice(0,maxlimit)
+
+        console.log(sliceFiles,"slicefiles")
+
         setSelectedImage(sliceFiles)
 
     }
@@ -78,6 +81,7 @@ const PropertyEdit = () => {
 
         try {
             setImageLoading(true)
+            console.log(imgSrc,"image")
             const res = await deleteImage(imgSrc, data._id)
             if (res.status === 200) {
                 setData(res?.data?.updateData)

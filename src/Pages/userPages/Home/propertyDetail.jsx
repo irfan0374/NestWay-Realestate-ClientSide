@@ -1,5 +1,5 @@
 import React,{useState,useEffect} from 'react'
-import Navbar from '../../../Component/userComponent.js/Navbar'
+import Navbar2 from '../../../Component/userComponent.js/Navbar2'
 import DetailePage from '../../../Component/userComponent.js/DetailePage'
 import { DetailsProperty } from '../../../Api/userApi'
 import { useParams } from 'react-router-dom'
@@ -21,7 +21,9 @@ const propertyDetail = () => {
     },[id])
   return (
   <>
-  <Navbar/>
+   <div className='mb-28'>
+<Navbar2 />
+</div>
   {loading ?(<Loading/>):(<DetailePage property={detailProperty}/>)
   }
   </>

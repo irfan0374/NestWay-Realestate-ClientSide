@@ -93,7 +93,7 @@ const sentMailCard = ({partnerId}) => {
   required=""
 ></textarea>
 <div className='my-4'> 
-    <button  type="submit"  className='w-full border rounded-md bg-gray-400 h-9'>Send </button>
+    <button  type="submit"  className='w-full border rounded-md bg-gray-400 h-9' onClick={() => document.getElementById('my_modal_1').close()}>Send </button>
 </div>
 </div>
 </form>

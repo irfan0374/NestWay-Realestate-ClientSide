@@ -1,14 +1,16 @@
 import React,{useState,useEffect} from 'react'
 import MainCard from '../../../Component/CommonComponent/MainCard'
-import Navbar from '../../../Component/userComponent.js/Navbar'
+import Navbar2 from '../../../Component/userComponent.js/Navbar2'
 import { rentProperty } from '../../../Api/userApi'
 import Loading from '../../../Component/Loading/Loading'
+import { useSelector } from 'react-redux'
+import Footer from '../../../Component/CommonComponent/Footer'
 const RentPage = () => {
+  // const {user}=useSelector((state)=>state.userReducer)
     const [property,setProperty]=useState([])
     const [loading,setLoading]=useState(true)
     useEffect(()=>{
         rentProperty().then((res)=>{
-            console.log(res,"dataaa")
            setProperty(res?.data?.rentProperty)
 
         }).catch((error)=>{
@@ -19,7 +21,9 @@ const RentPage = () => {
     },[])
   return (
     <>
-    <Navbar />
+  <div className='mb-28'>
+<Navbar2 />
+</div>
     <div className=' text-2xl font-normal m-12 '>Rent</div>
     {loading ? (
       <Loading />
@@ -30,6 +34,7 @@ const RentPage = () => {
         ))}
       </div>
     )}
+    <Footer/>
   </>
 );
         }

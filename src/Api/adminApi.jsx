@@ -49,3 +49,7 @@ export async function premiumUser(){
     const data=await adminAxiosInstance.get('/premiumUser')
     return data
 }
+export async function fetchPremiumUser(){
+    const data=await adminAxiosInstance.get('/fetchPremiumUser')
+    return data;
+}
