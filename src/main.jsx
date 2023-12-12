@@ -4,17 +4,13 @@ import App from './App.jsx'
 import './index.css'
 import { Provider } from 'react-redux';
 
-import { ChakraProvider } from '@chakra-ui/react'
 import { PersistGate } from 'redux-persist/integration/react';
 import { persistor, store } from './Redux/Store.js';
 ReactDOM.createRoot(document.getElementById('root')).render(
 
   <Provider store={store}>
     <PersistGate loading={null} persistor={persistor}>
-      <ChakraProvider>
-
         <App />
-      </ChakraProvider>
 
     </PersistGate>
 

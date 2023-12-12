@@ -14,7 +14,7 @@ const SignupPage = () => {
 
   const onSubmit = async () => {
     try {
-      console.log("hello")
+     
       setLoading(true)
       const res = await userSignup(values)
       if (res?.status === 201) {
@@ -96,7 +96,6 @@ const SignupPage = () => {
                 required=""
               />
               {errors.email && touched.email && (<p className="text-red-800">{errors.email}</p>)}
-
             </div>
             <div>
               <label

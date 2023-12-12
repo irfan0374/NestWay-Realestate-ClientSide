@@ -1,32 +1,40 @@
-import React, { useEffect, useState } from 'react';
 import mapboxgl from 'mapbox-gl';
+
+import React, { useEffect, useRef, useState } from 'react';
 import MapboxGeocoder from '@mapbox/mapbox-gl-geocoder';
-import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css';
+import '@mapbox/mapbox-gl-geocoder/dist/mapbox-gl-geocoder.css'; 
 
-const GoogleSearch = () => {
-    const [search,setsearch]=useState('')
+
+const GoogleSearch = ({onLocationSelect}) => {
+  const geocoderContainerRef = useRef(null);
+  const geocoderRef = useRef(null);
+  const [maplocation,setmaplocation]=useState("")
+
+
   useEffect(() => {
-    mapboxgl.accessToken = 'pk.eyJ1IjoiaXJmYW4zNzQiLCJhIjoiY2xwZmlqNzVyMWRuMDJpbmszdGszazMwaCJ9.7wdXsKdpOXmDR9l_ISdIqA';
+    if (!geocoderRef.current) {
+      geocoderRef.current = new MapboxGeocoder({
+        accessToken: 'pk.eyJ1IjoiaXJmYW4zNzQiLCJhIjoiY2xwZmlqNzVyMWRuMDJpbmszdGszazMwaCJ9.7wdXsKdpOXmDR9l_ISdIqA',
+        mapboxgl: mapboxgl,
+      });
 
-    const map = new mapboxgl.Map({
-      container: 'geocoder-map', // Use a container div (id="geocoder-map") to hold the map
-    });
+      geocoderRef.current.addTo(geocoderContainerRef.current);
 
-    const geocoder = new MapboxGeocoder({
-      accessToken: mapboxgl.accessToken,
-      mapboxgl: mapboxgl
-    });
-
-    map.addControl(geocoder);
-
-    // Cleanup when the component unmounts
-    return () => map.remove();
+      geocoderRef.current.on('result', (event) => {
+        onLocationSelect(event.result);
+      });
+    }
   }, []);
 
+
   return (
-    <div className='-z-10'>
-      <div id="geocoder-map" className='-z-10'  />
-    </div>
+    <div className='mt-2'>
+    
+   
+      <div ref={geocoderContainerRef} className="geocoder-container"></div>
+    
+  </div>
+
   );
 };
 

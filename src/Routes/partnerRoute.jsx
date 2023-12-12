@@ -23,7 +23,7 @@ const PartnerRoute = () => {
         <Route path='/home' element={<PartnerHome/>}/>
         <Route path='/kycUpload' element={<KycUpload/>}/>
         <Route path='/partnerHome' element={<PartnerHome/>}/>
-        <Route path='/propertyDetail/:propertyId' element={<DetailPage/>}/>
+        <Route path='/propertyDetail' element={<DetailPage/>}/>
         <Route path='/partnerProfile' element={<PartnerProfilePage/>}/>
         <Route path='/propertyEdit/:propertyId' element={<PropertyEdit/>}/>
         <Route path='/chat' element={<Chat/>}/>

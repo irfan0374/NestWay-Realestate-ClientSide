@@ -125,9 +125,9 @@ const LoginPage = () => {
 
                 <div className="mt-3">
                   <p>
-                    <a href="/forgetPassword" className="text-purple-500">
+                    <Link to={"/forgotPassword"} className="text-purple-500">
                       Forgot Password?
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </form>

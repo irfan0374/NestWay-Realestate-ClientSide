@@ -105,3 +105,25 @@ export const BhkDataSales=async(type)=>{
     const data=await userAxiosInstance.get(`/propertyByBhkSales/${type}`)
     return data
 }
+export const userForgetPassword=async(email)=>{
+    console.log(email,"email apiii")
+    const data=await userAxiosInstance.get(`/forgotPassword/${email}`)
+    return data;
+}
+export const userResetPassword=async(id,token,password)=>{
+    console.log(id,token,password,"hello userResetPassword")
+    const data=await userAxiosInstance.patch(`/resetPassword/${id}/${token}`,{password})
+    return data;
+}
+export const passwordChange=async(values)=>{
+    const data=await userAxiosInstance.patch('/passwordChange',{...values})
+    return data
+}
+export const getThePropertyType=async()=>{
+        const data=await userAxiosInstance.get('/getThePropertyType')
+    return data
+}
+export const searchProperty=async(values)=>{
+        const data=await userAxiosInstance.post('/Search',{...values})
+    return data
+}

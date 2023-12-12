@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react'
-import { BhkDataRent, RentBudget } from '../../Api/userApi'
+import { BhkDataRent, RentBudget, RentData } from '../../Api/userApi'
 import Loading from '../Loading/Loading'
 import MainCard from '../CommonComponent/MainCard'
 
 const CardRentDetails = ({ datas,values }) => {
+  console.log(datas,values,"valuessssssssss")
  
   const [RentProperty, setRentProperty] = useState([])
   const [loading, setLoading] = useState(false)
@@ -56,6 +57,7 @@ const CardRentDetails = ({ datas,values }) => {
 
   useEffect(() => {
     if(values==="property"){
+      console.log(datas,values,"property nnnnnnnnnnnnnnnnn")
       RentDetails()
     }else if(values==="budget"){
      budgetRent()

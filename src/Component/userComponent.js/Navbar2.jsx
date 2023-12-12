@@ -2,11 +2,14 @@ import React,{useEffect,useState} from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { userLogout } from '../../Redux/Slice/userSlice'
+import { findUser } from '../../Api/userApi'
 
 const Navbar = () => {
 
   const navigate=useNavigate()
-  const user=useSelector((state)=>state.userReducer.user)
+  const [userData,setUserData]=useState('')
+
+  const {user}=useSelector((state)=>state.userReducer)
   const dispatch=useDispatch()
   const handleLogout=()=>{
     localStorage.removeItem("usertoken")
@@ -14,6 +17,18 @@ const Navbar = () => {
     navigate('/login')
 
   }
+  useEffect(()=>{
+    if(user){
+
+      findUser(user?._id).then((res)=>{
+        console.log(res?.data?.User,"resiiiiiiiiiiiiiii")
+        setUserData(res?.data?.User)
+      }).catch((error)=>{
+        console.log(error.message)
+      })
+    }
+
+  },[user])
 
   return (
   <>
@@ -36,7 +51,7 @@ const Navbar = () => {
       </div>
     
 
-      <button
+      {userData?.subscription?.planType?<div className='mx-9'><svg xmlns="http://www.w3.org/2000/svg" width={40} height={40} data-name="Layer 2" viewBox="0 0 302.17 302.17" id="crown"><g data-name="Layer 1"><rect width="302.17" height="302.17" fill="none"></rect><path fill="#ff6f00" d="M215.94 124.69c-7.34-3.85-15.88-6.25-25.37-7.14-6.1-.57-11.77-.44-16.5-.06l1.58 3.69 17.07 39.83 34.57-23.05 3.17-2.11c-4.12-4.52-8.98-8.25-14.51-11.16zM111.61 117.55c-9.5.89-18.04 3.29-25.37 7.14-5.54 2.91-10.39 6.64-14.51 11.16l3.17 2.11 34.57 23.05 17.07-39.83 1.58-3.69c-4.72-.38-10.4-.51-16.5.06z"></path><path fill="#ffca28" d="M274.64,107.96c-.64-.51-1.54-.54-2.22-.09l-41.96,27.98-3.17,2.11-34.57,23.05-17.07-39.83-1.58-3.69-21.25-49.58c-.3-.69-.98-1.14-1.74-1.14s-1.44,.45-1.74,1.14l-21.25,49.58-1.58,3.69-17.07,39.83-34.57-23.05-3.17-2.11-41.96-27.98c-.68-.45-1.57-.42-2.22,.09-.64,.51-.89,1.37-.6,2.13l36.63,99.9c1.08-.29,2.22-.45,3.39-.45H235.22c1.17,0,2.31,.16,3.39,.45l36.63-99.9c.28-.77,.04-1.63-.6-2.13Z"></path><path fill="#ffa000" d="M238.61,209.99c-1.08-.29-2.22-.45-3.39-.45H66.95c-1.17,0-2.31,.16-3.39,.45-5.5,1.49-9.55,6.52-9.55,12.48,0,7.13,5.8,12.94,12.94,12.94H235.22c7.13,0,12.94-5.8,12.94-12.94,0-5.96-4.05-10.99-9.55-12.48Z"></path></g></svg></div>:<button
   className="bg-yellow-800 text-white border-yellow-400 border-b-4 font-medium overflow-hidden relative px-4 py-2 rounded-md hover:brightness-150 hover:border-t-4 hover:border-b active:opacity-75 outline-none duration-300 group hover:text-gray-80"
   onClick={() => {
     user ?navigate('/subscription') :  document.getElementById('my_modal_3').showModal();
@@ -45,6 +60,7 @@ const Navbar = () => {
   <span className="bg-yellow-400 shadow-yellow-400 absolute -top-[150%] left-0 inline-flex w-80 h-[5px] rounded-md opacity-50 group-hover:top-[150%] duration-500 shadow-[0_0_10px_10px_rgba(0,0,0,0.3)]"></span>
   Get premium+
 </button>
+  }
 
       <div className="dropdown dropdown-end">
         <label tabIndex={0} className="btn btn-ghost btn-circle avatar">

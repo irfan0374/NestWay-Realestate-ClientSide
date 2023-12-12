@@ -21,6 +21,10 @@ import PropertyCards from '../Component/userComponent.js/Card/propertyCards';
 import DetailCards from '../Pages/userPages/Home/DetailCards';
 import CardRentDetails from '../Component/userComponent.js/CardRentDetails';
 import CardSaleDetails from '../Component/userComponent.js/CardSaleDetails';
+import ResetPassword from '../Pages/userPages/ResetPassword';
+import ForgetPassword from '../Component/CommonComponent/ForgotPassword';
+import SearchProperty from '../Pages/userPages/searchProperty';
+
 const UseRoute = () => {
   return (
     <Routes>
@@ -28,7 +32,7 @@ const UseRoute = () => {
       <Route path='/login' element={<UserPublic><RegisterPage /></UserPublic>} />
       <Route path='/otp' element={<UserPublic><Otp /></UserPublic>} />
       <Route path='/propertyList' element={<PropertyPage />} />
-      <Route path='/propertyDetails/:id' element={<PropertyDetail />} />
+      <Route path='/propertyDetails' element={<PropertyDetail />} />
       <Route path='/account' element={<UserProtect><Profile /></UserProtect>} />
       <Route path='/rent' element={<UserPublic><RentPage /></UserPublic>} />
       <Route path='/sale' element={<UserPublic><SalePage /></UserPublic>} />
@@ -40,7 +44,10 @@ const UseRoute = () => {
       <Route path='/propertyCard' element={<PropertyCards />} />
       <Route path='/CardRentDetail' element={<CardRentDetails />} />
       <Route path='/CardSaleDetail' element={<CardSaleDetails />} />
-      <Route path='/CardDetails' element={<DetailCards/>} />
+      <Route path='/CardDetails' element={<DetailCards />} />
+      <Route path='/forgotPassword' element={<ForgetPassword />} />
+      <Route path='/resetPassword/:id/:token' element={<ResetPassword />} />
+      <Route path='/searchProperty' element={<SearchProperty />} />
 
     </Routes>
   );

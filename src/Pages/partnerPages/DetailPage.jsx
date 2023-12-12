@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import PropertyDetail from '../../Component/CommonComponent/PropertyDetail'
-import { useParams } from 'react-router-dom'
+import { useLocation, useParams } from 'react-router-dom'
 import { propertylist } from '../../Api/partnerApi'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
@@ -12,13 +12,14 @@ const DetailPage = () => {
     const navigate=useNavigate()
     const [propertyDetail,setPropertyDetail]=useState()
 
-    const {propertyId}=useParams()
+   const location=useLocation()
+   const {data}=location.state
 
     const [loading,setLoading]=useState(true)
 
     
    useEffect(()=>{
-    propertylist(propertyId)
+    propertylist(data)
     .then((res)=>{
         setPropertyDetail(res?.data?.detailProperty)
 
@@ -33,7 +34,7 @@ const DetailPage = () => {
         setLoading(false)
     })
     
-   },[propertyId])
+   },[data])
 
 
   return (

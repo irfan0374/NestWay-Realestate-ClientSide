@@ -1,17 +1,47 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { CiLocationOn } from "react-icons/ci";
 import { TiTickOutline } from "react-icons/ti";
 import { MdCurrencyRupee } from "react-icons/md";
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { findUser } from '../../Api/userApi';
 const DetailePage = ({ property }) => {
+    const [Premium,setPremium]=useState()
+    const [loading,setLoading]=useState(false)
+    const location=useLocation()
+    const {role}=location.state   
 
+    const {user}=useSelector((state)=>state?.userReducer)
 
+    const FindUser=async()=>{
+        try{
+            setLoading(true)
+            const res=await findUser(user._id)
+            if(res?.status===200){
+                console.log(res?.data,"resssssssssDataaaaaaaaaaaaaaaaa")
+                setLoading(false)
+                setPremium(res?.data?.User)
+            }
+        }catch(error){
+            setLoading(false)
+            console.log(error.message)
+        }
+    }
+
+    useEffect(()=>{
+        FindUser()
+
+    },[])
+    
+
+  const {partner}=useSelector((state)=>state?.partnerReducer)
     return (
         <>
             <div className='flex justify-center'>
                 <div className=' flex  flex-col items-start  mx-4 bg-gray-200  w-full '>
                     <div className='m-8'>
-                        <div className='w-8 my-2 '>
+                       {role==="partner"&&( 
+                       <div className='w-8 my-2 '>
                             <div className="tooltip" data-tip="Edit Property">
                                 <button style={{ marginLeft: '8px' }}>
                                     <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" id="information">
@@ -28,6 +58,7 @@ const DetailePage = ({ property }) => {
                             </Link>
 
                         </div>
+                        )}
 
                         <h1 className='text-5xl font-normal'>
                             {property.propertyName}
@@ -140,7 +171,8 @@ const DetailePage = ({ property }) => {
             </div>
 
 
-            <div className='flex justify-center  w-2/3 bg-gray-100  mx-4 my-3 rounded-md'>
+{role==="partner"||role==="user"&&Premium?.subscription?.planType?(
+             <div className='flex justify-center  w-2/3 bg-gray-100  mx-4 my-3 rounded-md'>
 
                 <div className=' w-5/6 mt-16 space-y-8'>
 
@@ -212,7 +244,8 @@ const DetailePage = ({ property }) => {
                         </div>
                     </div>
                 </div>
-            </div>
+         </div> 
+):(<div>you want to access more fuction buy premium subscription</div>)}
 
         </>
     )

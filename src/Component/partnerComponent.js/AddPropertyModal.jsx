@@ -10,8 +10,10 @@ import { FaTimes } from 'react-icons/fa';
 import { addPropertyState } from '../../Redux/Slice/partnerSlice'
 import { partnerLogout } from '../../Redux/Slice/partnerSlice'
 import Loading from '../Loading/Loading'
+import GoogleSearch from '../userComponent.js/googleSearch'
 
 const AddPropertyModal = () => {
+
   const { _id } = useSelector(state => state.partnerReducer.partner)
   const partnerId = _id
   const [loading, setLoading] = useState(false)
@@ -19,13 +21,17 @@ const AddPropertyModal = () => {
   const navigate = useNavigate()
   const [propertyImage, setPropertyImage] = useState([])
   const [featureField, setFeatureField] = useState([[]])
+  const [location,setLocation]=useState('')
+  const handleAddLocation=(selectLocation)=>{
+    setLocation(selectLocation.place_name)
+  }
 
   const [propertyFor, setPropertyFor] = useState('')
   const [bhk, setBhk] = useState('')
   const onSubmit = async () => {
     try {
       setLoading(true)
-      const res = await addProperty({ ...values, propertyImage, bhk, propertyFor, partnerId, featureField })
+      const res = await addProperty({ ...values, propertyImage, bhk, propertyFor, partnerId, featureField,location })
       if (res?.status === 200) {
 
         setLoading(false)
@@ -58,7 +64,6 @@ const AddPropertyModal = () => {
       floor: "",
       bathroom: "",
       description: "",
-      location: "",
       numberOfPeople: "",
     },
 
@@ -223,15 +228,7 @@ const AddPropertyModal = () => {
 
                   Location
                 </label>
-                <input
-                  type="text"
-                  name="location"
-                  id="location"
-                  {...getFieldProps("location")}
-                  className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500"
-                  placeholder="Enter the exact location"
-                  required=""
-                />
+               <GoogleSearch onLocationSelect={handleAddLocation}/>
               </div>
               <div>
                 <label

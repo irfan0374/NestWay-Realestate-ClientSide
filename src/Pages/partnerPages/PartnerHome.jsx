@@ -60,14 +60,13 @@ import Loading from '../../Component/Loading/Loading';
 
       
 {myProperty.map((data) => (
-  <Link key={data._id} to={`/partner/propertyDetail/${data._id}`}>       
-   <div className='grid-cols-2'>
+    
+   <div  key={data._id} className='grid-cols-2'onClick={()=>navigate('/partner/propertyDetail',{state:{data:data._id,role:"partner"}})}>
     <PartnerCard imgsrc={data.propertyImage[0]}>
       <h1>{data.propertyName}</h1>
       <p>{data.propertyFor}</p>
     </PartnerCard>
   </div>
-  </Link>
 
 ))}
 </div>)}
