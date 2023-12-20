@@ -45,10 +45,12 @@ const PropertyEdit = () => {
     }
     const handleImageUpdate = () => {
         const files = Array.from(event.target.files)
+       
         const isValid = files.every((file) =>
             file.type.startsWith("image/jpeg") || file.type.startsWith("image/png")
         )
         if (isValid) {
+          
             setPropertyToBase(files)
             setPropertyImageError(null)
         } else {
@@ -62,8 +64,6 @@ const PropertyEdit = () => {
         const file = Array.from(allImage)
         const sliceFiles=Array.from(file).slice(0,maxlimit)
 
-        console.log(sliceFiles,"slicefiles")
-
         setSelectedImage(sliceFiles)
 
     }
@@ -73,6 +73,7 @@ const PropertyEdit = () => {
             reader.readAsDataURL(files[i])
             reader.onloadend = () => {
                 setPropertyImage((prev => [...prev, reader.result]))
+               
             }
         };
     };
@@ -145,12 +146,13 @@ const PropertyEdit = () => {
 
         try {
             setLoading(true)
-            console.log(featureData, "feature field")
+            console.log(propertyImage, "hello")
             const res = await updateProperty({ ...values, featureData, propertyImage, bhk, propertyFor }, propertyId)
             if (res?.status === 200) {
+                console.log(res?.data?.Property,"eheh")
                 setData(res?.data?.Property)
                 setLoading(false)
-                navigate(`/partner/propertyDetail/${propertyId}`)
+                navigate('/partner/propertyDetail',{state:{data:propertyId ,role:"partner"}})
 
 
 

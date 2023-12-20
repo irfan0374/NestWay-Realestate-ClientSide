@@ -5,6 +5,7 @@ import Chatbox from './Chatbox'
 import Loading from '../../Loading/Loading'
 import { userChat } from '../../../Api/chatAxios'
 import { io } from "socket.io-client";
+import Navbar from '../Navbar'
 
 const END_POINT = "http://localhost:3001";
 let socket;
@@ -69,6 +70,10 @@ const MainPage = ({ data }) => {
   }, [messages, currentChat, conversation]);
 
     return (
+      <>
+      <div>
+        <Navbar/>
+      </div>
    
            <div>
            <div className="pt-5 w-full">
@@ -117,6 +122,7 @@ const MainPage = ({ data }) => {
              </div>
            </div>
          </div>
+         </>
     )
 }
 

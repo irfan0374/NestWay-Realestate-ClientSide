@@ -41,7 +41,7 @@ const UserProfile = () => {
   ];
   return (
     <>
-     <div className='mb-28'>
+     <div className='mb-24'>
 <Navbar2 />
 </div>
 <div className='my-4'>

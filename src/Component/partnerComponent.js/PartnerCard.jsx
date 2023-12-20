@@ -2,16 +2,16 @@ import React from 'react'
 
 const PartnerCard = ({ imgsrc, children, ...props }) => {
     return (
-        <div className='m-6 '>
+        <div className='m-3'>
             
             <div
                 {...props}
-                className='relative max-w-xs overflow-hidden rounded-2xl shadow-lg group h-[390px] flex justify-center '>
+                className='relative max-w-xs overflow-hidden rounded-2xl shadow-lg group h-[300px] flex justify-center '>
 
 
 
                 <img src={imgsrc} alt="No image"
-                    className='transition-transform group-hover:scale-110 duration-200 object-fill ' />
+                    className='transition-transform group-hover:scale-110 duration-200 object-fill w-full ' />
                     
 
 

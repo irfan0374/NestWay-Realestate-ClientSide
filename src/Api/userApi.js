@@ -1,8 +1,7 @@
 import { userAxiosInstance } from "./axiosInstance";
 export const userSignup=async(signupdata)=>{
-    console.log("signup")
     const data= await userAxiosInstance.post('/signup',signupdata)
-    
+    console.log(data)
 return data;
 
 }
@@ -30,7 +29,7 @@ export const detailProperty=async(propertyId)=>{
 }
 export const findUser=async(id)=>{
     const data=await userAxiosInstance.get(`/findUser/${id}`)
-    console.log(data)
+   
     return data;
 }
 export const updateProfile=async(values)=>{
@@ -42,7 +41,7 @@ export const updateProfile=async(values)=>{
 export const updataImage=async(image,id)=>{
   
     const data =await userAxiosInstance.patch('/updataImage',{image,id})
-    console.log(data)
+  
     return data
 }
 
@@ -62,7 +61,7 @@ export const DetailsProperty=async(propertyId)=>{
     return data;
 }
 export const createSubscription=async(prices,User)=>{
-    console.log(prices,User)
+   
     const data=await userAxiosInstance.patch('/create-subscription',{prices,User})
     return data
 }

@@ -10,7 +10,7 @@ const END_POINT = "http://localhost:3001";
 let socket;
 
 
-const MainPage = ({ data }) => {
+const MainPage = () => {
     const user = useSelector((state) => state.userReducer.user)
     const [loading,setLoading]=useState(false)
     const [currentChat,setCurrentChat]=useState(null)

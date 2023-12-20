@@ -1,50 +1,79 @@
-import React, { useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
-import { userLogout } from '../../Redux/Slice/userSlice'
-import { findUser } from '../../Api/userApi'
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Link, useNavigate } from 'react-router-dom';
+import { userLogout } from '../../Redux/Slice/userSlice';
+import { findUser } from '../../Api/userApi';
 
 const Navbar = () => {
+  const [color, setColor] = useState(false);
+  const [isSticky, setIsSticky] = useState(false);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 723); // Set to the breakpoint you want
 
-  const navigate = useNavigate()
-  const [userData, setUserData] = useState('')
+  const changeColor = () => {
+    if (window.scrollY >= 90) {
+      setColor(true);
+    } else {
+      setColor(false);
+    }
+  };
 
-  const { user } = useSelector((state) => state.userReducer)
-  const dispatch = useDispatch()
-  const handleLogout = () => {
-    localStorage.removeItem("usertoken")
-    dispatch(userLogout())
-    navigate('/login')
+  const handleScroll = () => {
+    if (window.scrollY >= 90) {
+      setIsSticky(true);
+    } else {
+      setIsSticky(false);
+    }
+  };
 
-  }
-  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 723); 
   const handleResize = () => {
     setIsSmallScreen(window.innerWidth <= 723); // Set to the breakpoint you want
   };
+
   useEffect(() => {
+    window.addEventListener('scroll', changeColor);
+    window.addEventListener('scroll', handleScroll);
     window.addEventListener('resize', handleResize);
+
     return () => {
+      window.removeEventListener('scroll', changeColor);
+      window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+  const { user } = useSelector((state) => state.userReducer)
+
   useEffect(() => {
     if (user) {
-
-      findUser(user?._id).then((res) => {
-
-        setUserData(res?.data?.User)
-      }).catch((error) => {
-        console.log(error.message)
-      })
+      findUser(user?._id)
+        .then((res) => {
+          setUserData(res?.data?.User);
+        })
+        .catch((error) => {
+          console.log(error.message);
+        });
     }
+  }, [user]);
 
-  }, [user])
+  const navigate = useNavigate();
+  const [userData, setUserData] = useState('');
+  const dispatch = useDispatch();
+
+  const handleLogout = () => {
+    localStorage.removeItem('usertoken');
+    dispatch(userLogout());
+    navigate('/login');
+  };
 
   return (
     <>
-   <nav
-        className=
-        'bg-gray-200  w-full fixed top-0 start-0 z-50 '
+   
+ <nav
+ className={`${isSticky
+   ? 'bg-white fixed top-0 left-0 w-full shadow-md z-1000 transition duration-500 ease-in-out'
+   : color
+   ? 'bg-gray-200 w-full fixed top-0 start-0 z-1000 transition duration-500 ease-in-out'
+   : 'bg-opacity-95 w-full fixed top-0 start-0 z-1000 transition duration-500 ease-in-out'
+ }`}
 >
         <div className="flex items-center justify-between mx-auto  p-2">
           <Link to={'/'}>
@@ -111,7 +140,8 @@ const Navbar = () => {
               </div>
 
             )}
-            {isSmallScreen?(""):(   <div className="dropdown dropdown-end">
+            {isSmallScreen?(""):( 
+                <div className="dropdown dropdown-end">
               <label tabIndex={0} className="btn btn-ghost btn-circle avatar">
                 <div className="w-32 mx-1">
                   <svg width="34" height="34" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -143,6 +173,8 @@ const Navbar = () => {
 
             </div>)}
 
+            
+
           </div>
 
           <div className={`items-center justify-between w-full md:flex md:w-auto  ${isSmallScreen ? 'hidden' : ''}`} id="navbar-sticky ">
@@ -165,21 +197,10 @@ const Navbar = () => {
       </nav>
 
       <dialog id="my_modal_3" className="modal">
-        <div className="modal-box">
-          <form method="dialog">
-            <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
-          </form>
-          <h3 className="font-bold text-lg">Hello!</h3>
-          <p className="py-4 font-bold text-gray-600">🚀 Hold on! You've found the premium button! To unlock the awesomeness, you need to login first.</p>
-          <div className='flex justify-center'>
-
-            <Link to={"/login"}>  <button className='text-white bg-blue-600 rounded-lg p-3'>Login Now</button></Link>
-          </div>
-        </div>
+        {/* Your Modal Content */}
       </dialog>
-
     </>
-  )
-}
+  );
+};
 
-export default Navbar
+export default Navbar;

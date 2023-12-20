@@ -5,7 +5,7 @@ import { useFormik } from 'formik'
 import { updateProfile } from '../../Api/userApi'
 import { editProfile } from '../../schema/editProfile'
 import Loading from '../Loading/Loading'
-import {updataImage} from '../../Api/userApi'
+import { updataImage } from '../../Api/userApi'
 
 const ProfilePage = () => {
   const [profile, setProfile] = useState()
@@ -13,14 +13,13 @@ const ProfilePage = () => {
   const [loading1, setLoading1] = useState(false)
   const [loading2, setLoading2] = useState(false)
 
-  const [err,setErr]=useState(false)
-  const [image,setImage]=useState()
+  const [err, setErr] = useState(false)
+  const [image, setImage] = useState()
   const user = useSelector((state) => state.userReducer.user)
   const userId = user._id;
   useEffect(() => {
-    console.log("helll")
-setLoading(true)
-findUser(userId).then((res) => {
+    setLoading(true)
+    findUser(userId).then((res) => {
       setLoading(false)
       setProfile(res?.data?.User)
     }).catch((error) => {
@@ -36,29 +35,29 @@ findUser(userId).then((res) => {
     },
     validationSchema: editProfile,
     onSubmit,
-    enableReinitialize:true 
+    enableReinitialize: true
   });
- 
-  
+
+
 
   async function onSubmit() {
     try {
       setLoading1(true)
-     const res=await updateProfile({...values,userId})
-     if(res?.status===200){
-      
-      setProfile(res?.data?.User)
-    }
-    setLoading1(false)
+      const res = await updateProfile({ ...values, userId })
+      if (res?.status === 200) {
+
+        setProfile(res?.data?.User)
+      }
+      setLoading1(false)
 
     } catch (error) {
       console.log(error.message)
       setLoading1(false)
     }
   };
-  const handleImage=(e)=>{
-    const file=e.target.files[0]
-    profileIMageToBase(file,userId)
+  const handleImage = (e) => {
+    const file = e.target.files[0]
+    profileIMageToBase(file, userId)
   }
   const profileIMageToBase = async (file, userId) => {
     const reader = new FileReader();
@@ -70,8 +69,8 @@ findUser(userId).then((res) => {
       try {
         setLoading2(true)
         const res = await updataImage(imageData, userId);
-        if(res.status===200){
-          
+        if (res.status === 200) {
+
           setProfile(res?.data?.User)
           setLoading2(false)
         }
@@ -84,73 +83,64 @@ findUser(userId).then((res) => {
     reader.readAsDataURL(file);
   };
 
- 
+
   return (
     <>
-
-
-      {loading ? (<Loading/>) : (
-
-        <div className=' flex flex-col  md:mx-28 container items-center'>
-          <div className='w-1/3'>
-
-
-            <div className="w-3/5 py-6 mx-32 flex items-center rounded-md">
+      {loading ? (<Loading />) : (
+        <div className=' flex flex-col  md:mx-28 container items-center '>
+          <div className=' w-3/4 lg:w-2/5 h-screen'>
+            <div className= " w-52 py-3 mx-9 lg:mx-32 flex items-center rounded-md">
               <label htmlFor="fileInput" className="cursor-pointer w-4/5">
-           
+                {loading2 ? (
+
+                  <div className="rounded-full object-cover w-36 h-36">
+
+                    <div className="w-12 h-12 rounded-full border-8 border-solid border-blue-700 border-t-transparent animate-spin"></div>
+
+                  </div>
+
+                ) : ( <div className='flex'>
                  
-                    {loading2 ? (
-                 
-                    <div className="rounded-full object-cover w-36 h-36">
+                  <img
+                  src=
+                  {profile?.profile ? profile?.profile : "/src/assets/Account.png"}
 
-<div className="w-12 h-12 rounded-full border-8 border-solid border-blue-700 border-t-transparent animate-spin"></div>
+                  className={"rounded-full object-cover w-56 h-40 lg:w-36 lg:h-36"}
+                  alt=""
+                />
+                 </div>)}
 
-                    </div>
-                   
-
-                    
-                    ):(<img
-                      src=
-                        {profile?.profile?profile?.profile: "/src/assets/Account.png"}
-                      
-                      className={"rounded-full object-cover w-36 h-36"}
-                      alt=""
-                    />)}
-                  
               </label>
               <input
                 id="fileInput"
                 type="file"
                 accept="image/*"
                 style={{ display: "none" }}
-                  onChange={handleImage}
+                onChange={handleImage}
               />
             </div>
-
-
-
-            <div className='container '>
+            <div >
               <form onSubmit={handleSubmit} >
-                <div className="relative z-0 w-full mb-6 group">
+                <div className=" z-0 w-full mb-3 group">
                   <label
                     htmlFor="name"
-                    className="block  text-sm font-medium text-gray-900 dark:text-white"
+                    className="block text-sm font-medium text-gray-900 dark:text-white"
                   >Username:
                   </label>
                   <input
                     type="name"
                     name="name"
-                   value={values?.name}
-                   onChange={handleChange}
-                   onBlur={handleBlur}
+                    value={values?.name}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=""
                     required=""
                   />
-            
+
 
                 </div>
-                <div className="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-3 group">
                   <label
                     htmlFor="name"
                     className="block flex items-center text-sm font-medium text-gray-900 dark:text-white"
@@ -178,7 +168,7 @@ findUser(userId).then((res) => {
                   />
 
                 </div>
-                <div className="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-3 group">
                   <label
                     htmlFor="name"
                     className="block  text-sm font-medium text-gray-900 dark:text-white"
@@ -187,24 +177,24 @@ findUser(userId).then((res) => {
                   <input
                     type="number"
                     name="phone"
- 
-                   value={values?.phone}
-                   onChange={handleChange}
-                   onBlur={handleBlur}
+
+                    value={values?.phone}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                     className="block py-2.5 px-0 w-full text-sm text-gray-900 bg-transparent border-0 border-b-2 border-gray-300 appearance-none dark:text-white dark:border-gray-600 dark:focus:border-blue-500 focus:outline-none focus:ring-0 focus:border-blue-600 peer"
                     placeholder=""
                     required=""
                   />
-                   
+
 
                 </div>
 
                 <div className='flex justify-center'>
-                  {loading1?(<div className="flex">
-            <span className="loading loading-spinner text-info"></span>
-            <span className="loading loading-spinner text-info"></span>
-            <span className="loading loading-spinner text-info"></span>
-            </div>):(<button
+                  {loading1 ? (<div className="flex">
+                    <span className="loading loading-spinner text-info"></span>
+                    <span className="loading loading-spinner text-info"></span>
+                    <span className="loading loading-spinner text-info"></span>
+                  </div>) : (<button
                     type="submit"
                     className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 "
                   >

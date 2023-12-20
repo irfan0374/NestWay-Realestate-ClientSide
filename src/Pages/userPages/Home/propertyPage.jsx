@@ -23,7 +23,7 @@ const propertyPage = () => {
     console.log(property)
   return (
     <>
-    <Navba2r/>
+    <Navbar2/>
     {property.map((data)=>(
     loading?(<p>loading</p>):(   
 

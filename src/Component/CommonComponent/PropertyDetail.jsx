@@ -4,7 +4,7 @@ import { React } from 'react'
 
 const PropertyDetail = ({ myProperty }) => {
 
-    return (
+    return ( 
         <>
             <div className="container mt-4 mx-auto p-4 rounded-md bg-gray-300 " key={myProperty._id} >
                 <div>
@@ -15,28 +15,6 @@ const PropertyDetail = ({ myProperty }) => {
                         <p className="my-4 text-lg text-gray-500">
                             {myProperty.description}
                         </p>
-                      
-                        {/* <a
-    href="#"
-    className="inline-flex items-center text-lg text-blue-600 dark:text-blue-500 hover:underline"
-  >
-    Read more
-    <svg
-      className="w-3.5 h-3.5 ms-2 rtl:rotate-180"
-      aria-hidden="true"
-      xmlns="http://www.w3.org/2000/svg"
-      fill="none"
-      viewBox="0 0 14 10"
-    >
-      <path
-        stroke="currentColor"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        strokeWidth={2}
-        d="M1 5h12m0 0L9 1m4 4L9 9"
-      />
-    </svg>
-  </a> */}
                     </>
 
                 </div>

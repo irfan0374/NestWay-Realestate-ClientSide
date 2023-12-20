@@ -58,10 +58,10 @@ const LoginPage = () => {
             <div
               className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
               style={{
-                backgroundImage: "url(https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80)",
+                backgroundImage: "url(/src/assets/loginImage/image1.jpg)",
               }}
             >
-              <h1 className="text-black text-3xl mb-3">
+              {/* <h1 className="text-gray-400 text-3xl mb-3">
                 Welcome to nestWay
               </h1>
               <div>
@@ -69,7 +69,7 @@ const LoginPage = () => {
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
 
                 </p>
-              </div>
+              </div> */}
             </div>
             <div className="w-full lg-w-1/2 py-16 px-12">
               <div className="pb-2">
@@ -88,11 +88,14 @@ const LoginPage = () => {
                       d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"
                     />
                   </svg>
-                  <span className="text-blue-600">Return Home</span>
+                  <span className="text-blue-600 font-sans font-light">Return Home</span>
                 </a>
               </div>
-              <h2 className="text-3xl mb-4">User Login</h2>
+              <h2 className="text-3xl mb-4 text-black font-serif font-semibold ">User Login</h2>
               <form onSubmit={handleSubmit}>
+                <div className=''>
+
+                
                 <div className="mt-5">
                   <input
                     type="email"
@@ -119,6 +122,8 @@ const LoginPage = () => {
                     Login
                   </button>
                 </div>
+                </div>
+                </form>
                 <div className="flex items-center justify-center mt-2 dark:bg-gray-800">
                 <GoogleButtonUser/>
                 </div>
@@ -130,7 +135,8 @@ const LoginPage = () => {
                     </Link>
                   </p>
                 </div>
-              </form>
+                
+              
             </div>
           </div>
         </div>

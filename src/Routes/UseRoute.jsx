@@ -34,9 +34,9 @@ const UseRoute = () => {
       <Route path='/propertyList' element={<PropertyPage />} />
       <Route path='/propertyDetails' element={<PropertyDetail />} />
       <Route path='/account' element={<UserProtect><Profile /></UserProtect>} />
-      <Route path='/rent' element={<UserPublic><RentPage /></UserPublic>} />
-      <Route path='/sale' element={<UserPublic><SalePage /></UserPublic>} />
-      <Route path='/subscription' element={<UserPublic><PremiumPage /></UserPublic>} />
+      <Route path='/rent' element={<RentPage />} />
+      <Route path='/sale' element={<SalePage />} />
+      <Route path='/subscription' element={<PremiumPage />} />
       <Route path='/status' element={<UserProtect><Status /></UserProtect>} />
       <Route path='/contactToAgent' element={<UserProtect><SentMailCard /></UserProtect>} />
       <Route path='/AgentDetails/:partnerId' element={<UserProtect><AgentDetails /></UserProtect>} />

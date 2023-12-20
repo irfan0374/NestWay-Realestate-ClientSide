@@ -47,24 +47,16 @@ const AdminLogin = () => {
               <div
                 className="w-full lg:w-1/2 flex flex-col items-center justify-center p-12 bg-no-repeat bg-cover bg-center"
                 style={{
-                  backgroundImage: "url(https://images.unsplash.com/photo-1459767129954-1b1c1f9b9ace?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80)",
+                  backgroundImage: "url(/src/assets/loginImage/adminLogin.jpg)",
                 }}
               >
-                <h1 className="text-black text-3xl mb-3">
-                 Admin
-                </h1>
-                <div>
-                  <p className="text-black">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean
-                    
-                  </p>
-                </div>
+                
               </div>
               <div className="w-full lg-w-1/2 py-16 px-12">
                 <div className="pb-2">
                 
                 </div>
-                <h2 className="text-3xl mb-4">Admin Login</h2>
+                <h2 className="text-3xl mb-4 font-serif font-semibold">Admin Login</h2>
                 <form onSubmit={handleSubmit}>
                   <div className="mt-5">
                     <input
@@ -90,7 +82,7 @@ const AdminLogin = () => {
                     <button 
                     type='submit'
                     className="w-full bg-blue-500 py-3 text-center text-white rounded-lg shadow-md">
-                      Sign in
+                      SignIn
                     </button>
                   </div>
                   

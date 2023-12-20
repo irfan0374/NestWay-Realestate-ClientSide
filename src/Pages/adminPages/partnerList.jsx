@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { partnerList, partnerBlock } from '../../Api/adminApi';
 import { toast } from 'react-toastify';
 import NavBar from '../../Component/adminComponet.js/NavBar';
@@ -12,6 +12,25 @@ const PartnerLists = () => {
   const [activeModal, setactiveModal] = useState(null)
   const [currentPage, setCurrentPage] = useState(1)
 
+  const inputRef = useRef(null);
+  const [isSmallScreen, setIsSmallScreen] = useState(window.innerWidth <= 723);
+  const [inputVisible, setInputVisible] = useState(false);
+
+  const handleResize = () => {
+    setIsSmallScreen(window.innerWidth <= 723)
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", handleResize)
+    return () => {
+      window.removeEventListener("resize", handleResize)
+    }
+  }, [])
+  const showInput = () => {
+    setInputVisible((prev) => !prev);
+  };
+
+
   useEffect(() => {
     partnerList()
       .then((res) => {
@@ -22,6 +41,7 @@ const PartnerLists = () => {
       });
   }, []);
 
+  
   const openModal = (partnerId) => {
     setactiveModal(partnerId)
   }
@@ -47,6 +67,20 @@ const PartnerLists = () => {
       console.log(error.message);
     }
   };
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (inputRef.current && !inputRef.current.contains(event.target)) {
+        setInputVisible(false);
+      }
+    };
+
+    document.addEventListener('mousedown', handleClickOutside);
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside);
+    };
+  }, [inputRef]);
+
 
   // pagination logics
 
@@ -54,11 +88,11 @@ const PartnerLists = () => {
   const firstIndex = (currentPage - 1) * recordPerPage
   const lastIndex = firstIndex + recordPerPage
   const records = partners.slice(firstIndex, lastIndex)
+
   const number = Array.from({ length: Math.ceil(partners.length / recordPerPage) }, (_, index) => index + 1)
 
   const handleSetActive = (index) => {
     setCurrentPage(index)
-
   }
 
   const prev = () => {
@@ -72,14 +106,11 @@ const PartnerLists = () => {
       setCurrentPage(currentPage + 1)
     }
   }
-
   const getItemProps = (index) => ({
     variant: currentPage === index ? "filled" : "text",
     color: "gray",
     onClick: () => handleSetActive(index),
   });
-
-
 
   const filtered = searchInput
     ? partners.filter((partner) =>
@@ -92,24 +123,34 @@ const PartnerLists = () => {
       <NavBar />
       <div className="mx-auto flex">
         <SideBar />
-        <div className="w-full overflow-y-auto">
-          <div className="h-screen container mt-4">
+        <div className="w-full">
+          <div className="h-screen container mx-2 w-full ">
             <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
               <h1 className="text-3xl pt-2">Partner List</h1>
-              <div className="flex items-center justify-end py-4 bg-white dark:bg-gray-800">
+              <div className="flex items-center justify-end py-4 ">
                 <label htmlFor="table-search" className="sr-only">
                   Search
                 </label>
+                <button
+                  className={`text-sm py-1 px-2 bg-gray-400 text-white rounded-lg ${isSmallScreen ? (inputVisible ? 'hidden' : 'block') : 'hidden'} lg:hidden`}
+                  onClick={showInput}
+                >
+                  Search
+                </button>
+
                 <div className="relative">
                   <input
+                    ref={inputRef}
                     type="text"
                     id="table-search-users"
                     value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
-                    className="block p-2 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                    className={`block p-1 pl-4 lg:p-2 lg:pl-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-50 lg:w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 ${inputVisible ? "block" : "hidden"
+                      }`}
                     placeholder="Search for users"
                   />
                 </div>
+
               </div>
               <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-lg overflow-hidden">
                 <thead className="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
@@ -157,7 +198,7 @@ const PartnerLists = () => {
                               </div>
 
                             )}
-               
+
                             < Link to={`/admin/kycApproval/${partner._id}`} >
                               <button className="relative z-10 block bg-gray-800 rounded p-2 hover:bg-gray-700 focus:outline-none focus:bg-gray-700">
                                 <svg className="h-2 w- text-white" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -165,7 +206,7 @@ const PartnerLists = () => {
                                 </svg>
                               </button>
                             </Link>
-                            
+
 
 
                           </div>
@@ -286,6 +327,7 @@ const PartnerLists = () => {
                   )}
                 </tbody>
               </table>
+
 
               {/* pagination start */}
 

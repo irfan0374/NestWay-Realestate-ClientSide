@@ -46,8 +46,8 @@ const ChangePassword = () => {
   return (
     <>
   {loading?(<Loading/>):(
-    <div className=' flex flex-col  md:mx-28 md:my-20 container items-center'>
-    <div className='w-1/3'>
+    <div className=' flex flex-col  md:mx-28 md:my-8 container items-center'>
+    <div className=' w-3/5 lg:w-2/5'>
       <div className=' mb-12 font-bold underline text-xl'>Change password</div>
       <form onSubmit={handleSubmit}>
         <div className="relative z-0 w-full mb-6 group">

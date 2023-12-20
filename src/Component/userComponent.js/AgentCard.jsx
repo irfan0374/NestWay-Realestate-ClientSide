@@ -1,5 +1,5 @@
 import React, { useEffect,useState } from 'react'
-import Navbar from "./Navbar"
+
 import { Link } from 'react-router-dom'
 import { createChat } from '../../Api/chatAxios'
 import { useSelector } from 'react-redux'

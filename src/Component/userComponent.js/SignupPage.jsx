@@ -18,7 +18,7 @@ const SignupPage = () => {
       setLoading(true)
       const res = await userSignup(values)
       if (res?.status === 201) {
-        console.log("heii apiii")
+      
         const { userData, otpId } = res.data;
         toast(res?.data?.status)
         navigate("/otp", {
@@ -26,9 +26,11 @@ const SignupPage = () => {
         });
         setLoading(false)
       }
-    } catch (err) {
+    } catch (error) {
+      console.log("helo error")
+      console.log(error.response)
       setLoading(false);
-      toast.error(err.response?.data?.status)
+      toast.error(error.response?.data?.status)
       console.log(err.message)
     }
   }

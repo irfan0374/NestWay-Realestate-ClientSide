@@ -63,6 +63,7 @@ export async function findProperty(partnerid){
     return data
 }
 export async function updateProperty(values,propertyId){
+    console.log({...values},"hello property eedit")
 
     const data=await partnerAxiosInstance.patch(`/updateProperty/${propertyId}`,{...values})
     return data

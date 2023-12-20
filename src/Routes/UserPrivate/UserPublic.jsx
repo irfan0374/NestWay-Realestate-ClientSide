@@ -6,19 +6,17 @@ import { Navigate } from "react-router-dom";
 
 const UserPublic = (props) => {
     try {
-        const token = localStorage.getItem("userToken");
+        const token = localStorage.getItem("usertoken");
         if (token) {
             // const decodedToken = jwt_decode(token);
             // const currentTime = Date.now() / 1000;
             // if (decodedToken.exp > currentTime) {
                 return <Navigate to="/" />;
             } else {
-                <Navigate to="/login" />;
-                return props.children
+                <Navigate to="/login"/>
+                     return props.children
+      
             }
-        // } else {
-        //     return <Navigate to="/login" />;
-        // }
     } catch (error) {
         console.log(error.message);
     }

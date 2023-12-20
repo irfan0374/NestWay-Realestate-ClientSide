@@ -23,7 +23,6 @@ const ProfilePage = () => {
 
 
   useEffect(() => {
-    console.log("helloo")
     setLoading(true)
     findPartner(partner).then((res) => {
       setProfile(res?.data?.Partner)
@@ -93,19 +92,12 @@ const ProfilePage = () => {
     <>
 
 
-      {loading ? (<Loading />) : (
-
-
-
-
-        <div className=' flex flex-col  md:mx-20 container items-center'>
-          <div className='w-1/3'>
-
-
-            <div className="w-3/5 py-6 mx-32 flex items-center rounded-md">
+      {loading ? (
+      <Loading />) : (
+        <div className=' flex flex-col  md:mx-28 container items-center '>
+          <div className=' w-3/4 lg:w-2/5 h-screen'>
+            <div className=" w-52 py-2 mx-9 lg:mx-32 flex items-center rounded-md">
               <label htmlFor="fileInput" className="cursor-pointer w-4/5">
-
-
                 {loading2 ? (
 
                   <div className="rounded-full object-cover w-36 h-36">
@@ -139,7 +131,7 @@ const ProfilePage = () => {
 
             <div className='container '>
               <form onSubmit={handleSubmit} >
-                <div className="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-3 group">
                   <label
                     htmlFor="name"
                     className="block  text-sm font-medium text-gray-900 dark:text-white"
@@ -159,7 +151,7 @@ const ProfilePage = () => {
 
 
                 </div>
-                <div className="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-3 group">
                   <label
                     htmlFor="name"
                     className="block flex items-center text-sm font-medium text-gray-900 dark:text-white"
@@ -187,7 +179,7 @@ const ProfilePage = () => {
                   />
 
                 </div>
-                <div className="relative z-0 w-full mb-6 group">
+                <div className="relative z-0 w-full mb-3 group">
                   <label
                     htmlFor="name"
                     className="block  text-sm font-medium text-gray-900 dark:text-white"

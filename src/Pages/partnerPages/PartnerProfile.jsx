@@ -64,7 +64,7 @@ const PartnerProfilePage=()=> {
     <>
     <Navbar/>
     <Tabs value="Profile">
-    <TabsHeader className="w-96 mx-auto mt-20 flex justify-center">
+    <TabsHeader className="w-96 mx-auto mt-5 flex justify-center">
       {data.map(({ label, value, icon }) => (
         <Tab key={value} value={value} className="w-40">
           <div className="flex items-center gap-2">
