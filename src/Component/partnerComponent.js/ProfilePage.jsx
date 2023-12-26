@@ -11,7 +11,7 @@ import "react-toastify/dist/ReactToastify.css";
 
 
 const ProfilePage = () => {
-  const [profile, setProfile] = useState("")
+  const [profile, setProfile] = useState('')
   const [loading, setLoading] = useState(false)
   const [loading1, setLoading1] = useState(false)
   const [loading2, setLoading2] = useState(false)
@@ -25,13 +25,15 @@ const ProfilePage = () => {
   useEffect(() => {
     setLoading(true)
     findPartner(partner).then((res) => {
+      setLoading(false)
       setProfile(res?.data?.Partner)
-      setLoading(false)
     }).catch((error) => {
-      console.log(error.message)
       setLoading(false)
+      console.log(error.message)
     })
-  }, [image])
+  }, [partner])
+
+
 
   const { values, errors, handleChange, handleBlur, handleSubmit, touched } = useFormik({
     initialValues: {
@@ -46,7 +48,7 @@ const ProfilePage = () => {
   async function onSubmit() {
     try {
       setLoading1(true)
-      console.log("hi from submit")
+     
       const res = await partnerProfileUpdate({ ...values, partnerId })
       if (res?.status === 200) {
         setProfile(res?.data?.Partner)
@@ -75,6 +77,8 @@ const ProfilePage = () => {
         if (res.status === 200) {
 
           setProfile(res?.data?.Partner)
+          
+         
           setLoading2(false)
         }
 
@@ -93,7 +97,7 @@ const ProfilePage = () => {
 
 
       {loading ? (
-      <Loading />) : (
+        <Loading />) : (
         <div className=' flex flex-col  md:mx-28 container items-center '>
           <div className=' w-3/4 lg:w-2/5 h-screen'>
             <div className=" w-52 py-2 mx-9 lg:mx-32 flex items-center rounded-md">

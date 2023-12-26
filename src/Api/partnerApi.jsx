@@ -69,7 +69,6 @@ export async function updateProperty(values,propertyId){
     return data
 }
 export async function deleteImage(imgsrc,propertyId){
-    console.log(imgsrc,propertyId,"propppppppppppppppppp")
     const data=await partnerAxiosInstance.patch(`/deletePropertyImage/${propertyId}`,{imgsrc})
     return data
 }
@@ -77,3 +76,8 @@ export async function getTheBuyerDetails(partnerId){
     const data=await partnerAxiosInstance.get(`/fetchBuyers/${partnerId}`)
     return data
 }
+
+export const hideProperty=async(isChecked,propertyId)=>{
+    const data=await partnerAxiosInstance.post('/hideProperty',{isChecked,propertyId})
+return data
+} 

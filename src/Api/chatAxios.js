@@ -2,7 +2,9 @@ import {chatAxiosInstance} from './axiosInstance'
 
 export const createChat=async(userId,partnerId)=>{
     
+    console.log("data")
     const data=await chatAxiosInstance.post('/createChat',{userId,partnerId})
+    console.log(data)
     return data
 }
 

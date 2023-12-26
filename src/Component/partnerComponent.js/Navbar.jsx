@@ -173,12 +173,12 @@ const Navbar = () => {
                         <path
                           d="M38.53,9.47A7.05,7.05,0,0,0,32,5H12a7,7,0,0,0-7,7V25a7,7,0,0,0,5,6.7,7.43,7.43,0,0,0,1,.23V38a1,1,0,0,0,.62.92A.84.84,0,0,0,12,39a1,1,0,0,0,.71-.29L15.44,36,16,36H28.59l6.7,6.71A1,1,0,0,0,36,43a.84.84,0,0,0,.38-.08A1,1,0,0,0,37,42V35.93A7,7,0,0,0,43,29V16A7.05,7.05,0,0,0,38.53,9.47ZM37,25a5,5,0,0,1-5,5H19a1,1,0,0,0-.71.29l-4,4L13,35.59V31a1,1,0,0,0-1-1,4.72,4.72,0,0,1-1.45-.22A5,5,0,0,1,7,25V12a5,5,0,0,1,5-5H32a5,5,0,0,1,5,5Z"
                           fill="#000"
-                          class="color000 svgShape"
+                          className="color000 svgShape"
                         ></path>
                         <path
                           d="M32 13H12a1 1 0 0 0 0 2H32a1 1 0 0 0 0-2zM32 18H12a1 1 0 0 0 0 2H32a1 1 0 0 0 0-2zM32 23H12a1 1 0 0 0 0 2H32a1 1 0 0 0 0-2z"
                           fill="#000"
-                          class="color000 svgShape"
+                          className="color000 svgShape"
                         ></path>
                       </svg>
                     </g>
@@ -220,6 +220,7 @@ const Navbar = () => {
                   {partner ? (<>
                     <li className='border border-black rounded-lg my-1 shadow-md'><Link onClick={handleLogout}>Logout</Link></li>
                     <li className='border border-black rounded-lg my-1 shadow-md'><Link to={'/account'}>Profile</Link></li>
+                   
                   </>) : (<li className='border border-black rounded-lg my-1 shadow-md'><Link to={'/login'}>Login</Link></li>)}
 
                 </ul>
@@ -244,6 +245,15 @@ const Navbar = () => {
                 </div>
               </label>
               <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52">
+              <li>
+                  <Link to={"/partner/home"}>
+                    <a className="justify-between">
+                      Home
+                      {/* <span className="badge">New</span> */}
+                    </a>
+                  </Link>
+                </li>
+
                 <li>
                   <Link to={"/partner/partnerProfile"}>
                     <a className="justify-between">
@@ -252,7 +262,7 @@ const Navbar = () => {
                     </a>
                   </Link>
                 </li>
-
+                
                 <li><a onClick={handleLogout}>Logout</a></li>
               </ul>
             </div>

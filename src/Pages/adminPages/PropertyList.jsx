@@ -113,7 +113,7 @@ const PropertyList = () => {
                     <SideBar />
                     <div className="w-full ">
                         <div className="h-screen container mx-2 w-full">
-                            <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg dark:border-gray-700">
+                            <div className="p-4 border-2 border-gray-200 border-dashed rounded-lg mediumSm:w-full w-96 lg:w-full dark:border-gray-700">
                                 <h1 className="text-3xl pt-2">PropertyList</h1>
                                 <div className="flex items-center justify-end py-4 bg-white dark:bg-gray-800">
                                     <label htmlFor="table-search" className="sr-only">
@@ -139,6 +139,7 @@ const PropertyList = () => {
                                         />
                                     </div>
                                 </div>
+                                <div className='overflow-x-scroll'>
                                 <table className="w-full text-sm text-left text-gray-500 dark:text-gray-400 rounded-lg overflow-hidden">
                                     <thead className="text-xs uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
                                         <tr>
@@ -227,6 +228,7 @@ const PropertyList = () => {
                                         )}
                                     </tbody>
                                 </table>
+                                </div>
 
                                 {/* pagination start */}
 

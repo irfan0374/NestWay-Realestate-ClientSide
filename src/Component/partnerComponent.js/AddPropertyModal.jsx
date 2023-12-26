@@ -130,7 +130,7 @@ const AddPropertyModal = () => {
                     onChange={e => handleRadioButton1(e)}
                     className="form-radio text-blue-500 border-2 border-blue-500 focus:ring-blue-300"
                   />
-                  <label for="propertyType1" class="block text-sm font-medium text-gray-900 dark:text-white">Rent/Lease</label>
+                  <label for="propertyType1" className="block text-sm font-medium text-gray-900 dark:text-white">Rent/Lease</label>
 
                   <input
                     type="radio"
@@ -140,7 +140,7 @@ const AddPropertyModal = () => {
                     onChange={e => handleRadioButton1(e)}
                     className="form-radio text-blue-500 border-2 border-blue-500 focus:ring-blue-300"
                   />
-                  <label for="propertyType2" class="block text-sm font-medium text-gray-900 dark:text-white">Sell</label>
+                  <label for="propertyType2" className="block text-sm font-medium text-gray-900 dark:text-white">Sell</label>
                 </div>
                 <div className='my-3'>
                   <label

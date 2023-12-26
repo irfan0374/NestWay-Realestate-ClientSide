@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import Loading from "../Loading/Loading";
 import Navbar2 from "../userComponent.js/Navbar2";
@@ -87,7 +87,8 @@ const ForgetPassword = () => {
                 </div>
               </form>
               <div className="text-sm text-gray-600 items-center flex justify-between">
-                <p className="text-gray-800 cursor-pointer hover:text-blue-500 inline-flex items-center ml-4">
+             <Link to={'/login'}>
+             <p className="text-gray-800 cursor-pointer hover:text-blue-500 inline-flex items-center ml-4">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5 mr-2"
@@ -102,6 +103,7 @@ const ForgetPassword = () => {
                   </svg>
                   Back
                 </p>
+             </Link>
                 <p className="hover:text-blue-500 cursor-pointer">Need help?</p>
               </div>
             </div>

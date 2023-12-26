@@ -53,3 +53,8 @@ export async function fetchPremiumUser(){
     const data=await adminAxiosInstance.get('/fetchPremiumUser')
     return data;
 }
+export async function dashboardData(){
+    const data=await adminAxiosInstance.get('/Dashboard')
+    console.log(data)
+    return data;
+}

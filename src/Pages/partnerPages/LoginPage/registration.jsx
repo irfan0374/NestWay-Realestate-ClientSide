@@ -12,7 +12,9 @@ import {
     Cog6ToothIcon,
 } from "@heroicons/react/24/solid";
 import PartnerSignup from './partnerSignup';
-import PartnerLogin from './partnerLogin'
+// import PartnerLogin from './partnerLogin'
+import PartnerLoginComponent from './partnerLogin'
+
 
 
 
@@ -24,7 +26,7 @@ const Registration = () => {
             value: "Login",
             icon: UserCircleIcon,
             desc:
-                <PartnerLogin />
+                <PartnerLoginComponent />
             ,
         },
         {

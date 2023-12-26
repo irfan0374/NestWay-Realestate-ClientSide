@@ -6,8 +6,7 @@ import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../Redux/Slice/userSlice";
-const CLIENT_ID = "396277747964-i3ks7qqkltcj9vc6ht9819svstah7kvb.apps.googleusercontent.com";
-console.log(CLIENT_ID,"IDDD")
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 import { userLoginWithGoogle } from "../../Api/userApi";
 
 const GoogleButtonUser = () => {
@@ -17,13 +16,10 @@ const GoogleButtonUser = () => {
   const responseMessage = async (response) => {
     try {
    
-        console.log( jwtDecode(response.credential))
       const user = jwtDecode(response.credential);
       const res = await userLoginWithGoogle(user.email);
       if (res?.status === 200) {
-          console.log(res.status,"res")
         const { token, registeredUser } = res.data;
-        console.log(registeredUser,"userr");
         localStorage.setItem("usertoken", token);
         dispatch(
           userLogin({

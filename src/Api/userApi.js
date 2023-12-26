@@ -1,10 +1,12 @@
 import { userAxiosInstance } from "./axiosInstance";
 export const userSignup=async(signupdata)=>{
     const data= await userAxiosInstance.post('/signup',signupdata)
-    console.log(data)
 return data;
-
 }
+export const resentOtp=async(userId)=>{
+    const data=await userAxiosInstance.post('/resentOtp',{userId})
+    return data
+} 
 export const otpVerification= async (otp,otpId,userId)=>{
     const data=await userAxiosInstance.post('/otpVerify',{otp,userId});
     return data;
@@ -16,7 +18,7 @@ export const userlogin=async(loginData)=>{
 };
 export const userLoginWithGoogle=async(userEmail)=>{
     const data=await userAxiosInstance.post('/googleUserLogin',{userEmail})
-    console.log(data,"data")
+   
     return data;
 }
 export const listProperty=async()=>{
@@ -105,7 +107,6 @@ export const BhkDataSales=async(type)=>{
     return data
 }
 export const userForgetPassword=async(email)=>{
-    console.log(email,"email apiii")
     const data=await userAxiosInstance.get(`/forgotPassword/${email}`)
     return data;
 }

@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { VscAccount } from "react-icons/vsc";
 import { CiLocationOn } from "react-icons/ci";
+import { BiRupee } from "react-icons/bi";
 
 
 const MainCard = ({ property }) => {
@@ -19,13 +20,17 @@ const navigate=useNavigate()
           <div className='h-32'>
 
             <div className="p-2 ">
-              <h5 className=" text-lg font-bold tracking-tight text-gray-900 dark:text-white">{property.propertyName}</h5>
+              <div className='flex justify-between'>
+              <h5 className=" text-lg font-bold tracking-tight text-gray-900 dark:text-white font-serif">{property.propertyName}</h5>
+              <h5 className=" flex line-clamp-2  text-gray-700 dark:text-gray-400 font-extrabold"><span><BiRupee /></span>{property.Price}</h5>
+              </div>
               <p className="line-clamp-2 mb-2 font-normal text-gray-700 dark:text-gray-400">{property.propertyType}</p>
               <h5 className=" flex line-clamp-2  truncate ... font-normal text-gray-700 dark:text-gray-400"><span><CiLocationOn /></span>{property.location}</h5>
+
             </div>
             <div className='flex justify-end'>
 
-                <button type="button" class="py-1 px-3 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"onClick={()=>navigate('/propertyDetails',{state:{propertyId:property._id,role:"user"}})}>More</button>
+                <button type="button" className="py-1 px-3 me-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-white rounded-lg border border-gray-200 hover:bg-gray-100 hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700"onClick={()=>navigate('/propertyDetails',{state:{propertyId:property._id,role:"user"}})}>More</button>
             </div>
 
               <Link to={`/AgentDetails/${property.partnerId._id}`}>

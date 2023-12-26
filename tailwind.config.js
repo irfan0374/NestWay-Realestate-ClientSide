@@ -12,8 +12,23 @@ module.exports = withMT({
   ],
   theme: {
     extend: {
+      animation: {
+        marquee: "marquee 50s linear infinite"
+      },
+      keyframes: {
+        marquee: {
+          from: {
+            transform: 'translateX(0)',
+          },
+          to: {
+            transform: 'translateX(calc(-100% - 2.5rem))',
+          },
+        },
+      },
+   
+
       screens: {
-        mediumSm: "540px",
+        mediumSm: "553px",
         mediumMd: "790px",
         ultraSm: "300px",
       },

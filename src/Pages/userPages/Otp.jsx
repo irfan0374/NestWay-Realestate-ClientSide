@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useFormik } from "formik";
 import {otpSchema} from '../../schema/otpValidation'
 import { toast } from 'react-toastify';
-import { otpVerification } from "../../Api/userApi";
+import { otpVerification, resentOtp } from "../../Api/userApi";
 
 const Otp = () => {
     const [countDown, setCountDown] = useState(30);
@@ -12,8 +12,6 @@ const Otp = () => {
     const navigation = useNavigate()
     const {otpId,userId}=location.state
   
-
-
     const decrementTimer = () => {
         if (countDown > 0) {
             setCountDown(countDown - 1)
@@ -22,8 +20,6 @@ const Otp = () => {
             setShowResendButton(true)
         }
     }
-
-
 useEffect(() => {
     const timer = setInterval(decrementTimer, 1000);
     return () => clearInterval(timer);
@@ -35,7 +31,6 @@ const onSubmit=async()=>{
         console.log(combinedOTP)
 
         const res=await otpVerification(combinedOTP,otpId,userId)
-        console.log(res)
         if(res?.data?.message){
             toast.success(res?.data?.message)
             navigation("/login",{state:"email verification"})   
@@ -97,11 +92,18 @@ const handleKeyUp=(e)=>{
           break;
       }
     }
+    const resendOTP=async()=>{
+      try{
+        const res=await resentOtp(userId)
+        if(res?.status==200){
+          toast.info(res?.data?.message)
+        }
 
-
-
-
-
+      }catch(error){
+        toast.error("something went wrong")
+        console.log(error.message)
+      }
+    }
 
 return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50">
@@ -204,18 +206,7 @@ return (
                     </div>
                   </div>
                 </form>
-            <div className="text-center mt-4">
-                {countDown > 0 ? (
-                    <p>Resend OTP in {countDown} seconds</p>
-                ) : showResendButton ? (
-                    <button
-                        onClick={resendOTP}
-                        className="text-blue-500 hover:underline cursor-pointer"
-                    >
-                        Resend OTP
-                    </button>
-                ) : null}
-            </div>
+          
         </div>
     </div>
 );

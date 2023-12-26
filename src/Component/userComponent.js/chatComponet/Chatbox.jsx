@@ -91,11 +91,11 @@ const Chatbox = ({chat,currentUser,setMessage,messages,socket}) => {
                   <img
                     src={partnerData?.profile || "/src/assets/Account.png"}
                     alt=""
-                    className="w-10 sm:w-16 h-10 sm:h-16 rounded-full"
+                    className="w-14 lg:w-12 h-10 lg:h-12 rounded-full"
                   ></img>
                 </div>
                 <div className="flex flex-col leading-tight">
-                  <div className="text-2xl mt-1 flex items-center">
+                  <div className="text-xl font-sans mt-1 flex items-center">
                     <span className="text-gray-700 mr-3">
                       {partnerData?.name}
                     </span>

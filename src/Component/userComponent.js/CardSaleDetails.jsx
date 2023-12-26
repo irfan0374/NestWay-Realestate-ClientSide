@@ -8,6 +8,7 @@ const CardSaleDetails = ({datas,values}) => {
   const [salesProperty, setSalesProperty] = useState([])
   
     useEffect(() => {
+      console.log("ehlho useEffect")
       if(values==="property"){
       salesDetails()
       }else if(values==="budget"){
@@ -65,7 +66,7 @@ const CardSaleDetails = ({datas,values}) => {
 <>
       {loading ? (<Loading />) : (<div>
 
-        <div className=" grid grid-cols-4">
+        <div className=" grid md:flex justify-center grid-cols-1  lg:grid-cols-4 gap-2">
         {salesProperty.map((data) => (
           <div key={data._id}>
             <MainCard property={data} />

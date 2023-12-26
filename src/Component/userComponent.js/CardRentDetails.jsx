@@ -3,20 +3,19 @@ import { BhkDataRent, RentBudget, RentData } from '../../Api/userApi'
 import Loading from '../Loading/Loading'
 import MainCard from '../CommonComponent/MainCard'
 
-const CardRentDetails = ({ datas,values }) => {
-  console.log(datas,values,"valuessssssssss")
- 
+const CardRentDetails = ({ datas, values }) => {
+
   const [RentProperty, setRentProperty] = useState([])
   const [loading, setLoading] = useState(false)
 
   const budgetRent = async () => {
-   
+
     try {
       setLoading(true)
       const res = await RentBudget(datas)
 
       if (res?.status === 200) {
-     
+
         setLoading(false)
         setRentProperty(res?.data?.Result)
       }
@@ -27,7 +26,7 @@ const CardRentDetails = ({ datas,values }) => {
   }
 
   const RentDetails = async () => {
-   
+
     try {
       setLoading(true)
       const res = await RentData(datas)
@@ -40,7 +39,7 @@ const CardRentDetails = ({ datas,values }) => {
       console.log(error.message)
     }
   }
-  const propertyByBhk=async()=>{
+  const propertyByBhk = async () => {
     try {
       setLoading(true)
       const res = await BhkDataRent(datas)
@@ -56,12 +55,11 @@ const CardRentDetails = ({ datas,values }) => {
 
 
   useEffect(() => {
-    if(values==="property"){
-      console.log(datas,values,"property nnnnnnnnnnnnnnnnn")
+    if (values === "property") {
       RentDetails()
-    }else if(values==="budget"){
-     budgetRent()
-    }else{
+    } else if (values === "budget") {
+      budgetRent()
+    } else {
       propertyByBhk()
     }
 
@@ -72,12 +70,12 @@ const CardRentDetails = ({ datas,values }) => {
     <>
       {loading ? (<Loading />) : (<div>
 
-        <div className=" grid grid-cols-4 gap-2">
-        {RentProperty.map((data) => (
-          <div key={data._id}>
-            <MainCard property={data} />
-              </div>
-        ))}
+        <div className=" grid md:flex justify-center grid-cols-1  lg:grid-cols-4 gap-2">
+          {RentProperty.map((data) => (
+            <div key={data._id}>
+              <MainCard property={data} />
+            </div>
+          ))}
 
         </div>
       </div>)}

@@ -24,7 +24,7 @@ const PartnerHome = () => {
   useEffect(() => {
     setLoading(true)
     listProperty(partnerId)
-      .then((res) => {        
+      .then((res) => {
         setProperty(res?.data?.Property);
         setLoading(false)
 
@@ -97,24 +97,28 @@ const PartnerHome = () => {
       <div>
 
 
-      {loading ? (
-  <Loading />
-) : (
-  <div className=' flex flex-row'>
-    {filtered.length > 0 ? (
-      filtered.map((data) => (
-        <div className='' key={data._id} onClick={() => navigate('/partner/propertyDetail', { state: { data: data._id, role: "partner" } })}>
-          <PartnerCard imgsrc={data.propertyImage[0]}>
-            <h1>{data.propertyName}</h1>
-            <p>{data.propertyFor}</p>
-          </PartnerCard>
-        </div>
-      ))
-    ) : (
-      <p>No property</p>
-    )}
-  </div>
-)}
+        {loading ? (
+          <Loading />
+        ) : (
+          <div className=' flex flex-row'>
+            {filtered.length > 0 ? (
+              filtered.map((data) => (
+                <div className='' key={data._id} onClick={() => navigate('/partner/propertyDetail', { state: { data: data._id, role: "partner" } })}>
+                  <PartnerCard imgsrc={data.propertyImage[0]}>
+                    <h1>{data.propertyName}</h1>
+                    <p>{data.propertyFor}</p>
+                  </PartnerCard>
+                </div>
+              ))
+            ) : (
+              <div className=' mx-20 mediumSm:mx-64' >
+
+                <img src="/src/assets/noProperty.png" className='w-52 h-32 lg:w-72 lg:h-56 lg:mx-48 ' alt="No Property" />
+                
+              </div> 
+            )}
+          </div>
+        )}
 
         {/* pagination start */}
 

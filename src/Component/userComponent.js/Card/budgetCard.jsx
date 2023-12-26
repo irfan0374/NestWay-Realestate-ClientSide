@@ -10,7 +10,7 @@ const BudgetCard = () => {
         <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-2'>
           <div className="da relative">
             <div className="absolute inset-0 bg-center dark:bg-black" />
-            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 3000000, value: "budget" } })}>
+            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 100000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
                   src='/src/assets/buildings/room5.jpg'
@@ -27,7 +27,7 @@ const BudgetCard = () => {
           </div>
           <div className="da relative">
             <div className="absolute inset-0 bg-center dark:bg-black" />
-            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 3000000, value: "budget" } })}>
+            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 300000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
                   src='/src/assets/buildings/bedroom2.jpg'
@@ -44,7 +44,7 @@ const BudgetCard = () => {
           </div>
           <div className="da relative">
             <div className="absolute inset-0 bg-center dark:bg-black" />
-            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 3000000, value: "budget" } })}>
+            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 1500000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
                   src='/src/assets/buildings/room3.jpg'
@@ -61,7 +61,7 @@ const BudgetCard = () => {
           </div>
           <div className="da relative">
             <div className="absolute inset-0 bg-center dark:bg-black" />
-            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 3000000, value: "budget" } })}>
+            <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 5000000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
                   src='/src/assets/buildings/room2.jpg'

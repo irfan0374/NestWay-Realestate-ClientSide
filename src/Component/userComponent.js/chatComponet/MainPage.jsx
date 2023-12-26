@@ -68,7 +68,7 @@ const MainPage = () => {
         <>
       {loading?(<Loading/>):(    
       <div>
-      <div className="pt-5">
+      <div className="mt-12">
         <div>
           <div className="md:flex no-wrap md:-mx-2 ">
             <div className="w-full  md:w-3/12 md:mx-2 bg-gray-200">

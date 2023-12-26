@@ -4,38 +4,60 @@ import { TiTickOutline } from "react-icons/ti";
 import { MdCurrencyRupee } from "react-icons/md";
 import { Link, useLocation } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { hideProperty } from '../../Api/partnerApi';
+import { toast } from 'react-toastify';
+
 const DetailePage = ({ property }) => {
+
     const { user } = useSelector((state) => state.userReducer)
     const [Premium, setPremium] = useState()
 
     const location = useLocation()
-    const { role } = location.state
+    const { data, role } = location.state
 
 
+    const [isChecked, setIsChecked] = useState(property.propertyStatus)
+
+    const handleHide = async () => {
+        try {
+            setIsChecked(!isChecked);
+            const res = await hideProperty(isChecked, data)
+            if (res?.status === 201) {
+                toast.info(res?.data?.message)
+            }
+        } catch (error) {
+            toast.error("something went wrong")
+            console.log(error.message)
+        }
+    }
     return (
         <>
-
-
             <div className="">
 
                 <div className='p-2'>
                     {role === "partner" && (
                         <div className='w-8 my-1 '>
-                            <div className="tooltip" data-tip="Edit Property" style={{ zIndex: -1 }}>
-                                <button style={{ marginLeft: '8px' }}>
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" id="information">
-                                        <path fill="none" d="M0 0h24v24H0z"></path>
-                                        <path d="M11 18h2v-6h-2zm1-16C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm-1-10h2V6h-2z"></path>
-                                    </svg>
-                                </button>
-                            </div>
 
-                            <Link to={`/partner/propertyEdit/${property._id}`}>
-                                <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" id="edit">
-                                    <path d="M3.5,24h15A3.51,3.51,0,0,0,22,20.487V12.95a1,1,0,0,0-2,0v7.537A1.508,1.508,0,0,1,18.5,22H3.5A1.508,1.508,0,0,1,2,20.487V5.513A1.508,1.508,0,0,1,3.5,4H11a1,1,0,0,0,0-2H3.5A3.51,3.51,0,0,0,0,5.513V20.487A3.51,3.51,0,0,0,3.5,24Z"></path>
-                                    <path d="M9.455,10.544l-.789,3.614a1,1,0,0,0,.271.921,1.038,1.038,0,0,0,.92.269l3.606-.791a1,1,0,0,0,.494-.271l9.114-9.114a3,3,0,0,0,0-4.243,3.07,3.07,0,0,0-4.242,0l-9.1,9.123A1,1,0,0,0,9.455,10.544Zm10.788-8.2a1.022,1.022,0,0,1,1.414,0,1.009,1.009,0,0,1,0,1.413l-.707.707L19.536,3.05Zm-8.9,8.914,6.774-6.791,1.4,1.407-6.777,6.793-1.795.394Z"></path>
-                                </svg>
-                            </Link>
+                         
+                                <Link to={`/partner/propertyEdit/${property._id}`}>
+                                    <svg xmlns="http://www.w3.org/2000/svg" data-name="Layer 1" viewBox="0 0 24 24" id="edit">
+                                        <path d="M3.5,24h15A3.51,3.51,0,0,0,22,20.487V12.95a1,1,0,0,0-2,0v7.537A1.508,1.508,0,0,1,18.5,22H3.5A1.508,1.508,0,0,1,2,20.487V5.513A1.508,1.508,0,0,1,3.5,4H11a1,1,0,0,0,0-2H3.5A3.51,3.51,0,0,0,0,5.513V20.487A3.51,3.51,0,0,0,3.5,24Z"></path>
+                                        <path d="M9.455,10.544l-.789,3.614a1,1,0,0,0,.271.921,1.038,1.038,0,0,0,.92.269l3.606-.791a1,1,0,0,0,.494-.271l9.114-9.114a3,3,0,0,0,0-4.243,3.07,3.07,0,0,0-4.242,0l-9.1,9.123A1,1,0,0,0,9.455,10.544Zm10.788-8.2a1.022,1.022,0,0,1,1.414,0,1.009,1.009,0,0,1,0,1.413l-.707.707L19.536,3.05Zm-8.9,8.914,6.774-6.791,1.4,1.407-6.777,6.793-1.795.394Z"></path>
+                                    </svg>
+                                </Link>
+
+                            <div>
+                                <div className="form-control w-52 mt-2 ">
+                                    <label className="cursor-pointer label">
+                                        <span className="label-text font-serif font-bold">You can Change the PropertyStatus</span>
+                                        <input
+                                            type="checkbox"
+                                            checked={isChecked}
+                                            onClick={handleHide}
+                                            className="toggle toggle-error" />
+                                    </label>
+                                </div>
+                            </div>
 
                         </div>
                     )}

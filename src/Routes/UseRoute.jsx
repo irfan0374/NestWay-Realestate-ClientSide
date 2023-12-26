@@ -24,7 +24,7 @@ import CardSaleDetails from '../Component/userComponent.js/CardSaleDetails';
 import ResetPassword from '../Pages/userPages/ResetPassword';
 import ForgetPassword from '../Component/CommonComponent/ForgotPassword';
 import SearchProperty from '../Pages/userPages/searchProperty';
-
+import AboutPage from '../Pages/userPages/AboutPage'
 const UseRoute = () => {
   return (
     <Routes>
@@ -48,6 +48,7 @@ const UseRoute = () => {
       <Route path='/forgotPassword' element={<ForgetPassword />} />
       <Route path='/resetPassword/:id/:token' element={<ResetPassword />} />
       <Route path='/searchProperty' element={<SearchProperty />} />
+      <Route path='/about' element={<AboutPage/>} />
 
     </Routes>
   );

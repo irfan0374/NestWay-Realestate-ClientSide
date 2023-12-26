@@ -13,6 +13,7 @@ import PartnerProfilePage from '../Pages/partnerPages/PartnerProfile'
 import PropertyEdit from '../Component/partnerComponent.js/PropertyEdit'
 import Chat from '../Pages/partnerPages/ChatPage/Chat'
 import BuyerDetailPage from '../Pages/partnerPages/BuyerDetailPage'
+import ForgetPassword from '../Component/CommonComponent/ForgotPassword'
 const PartnerRoute = () => {
   return (
     <>
@@ -28,6 +29,7 @@ const PartnerRoute = () => {
         <Route path='/propertyEdit/:propertyId' element={<PropertyEdit/>}/>
         <Route path='/chat' element={<Chat/>}/>
         <Route path='/buyerDetails' element={<BuyerDetailPage/>}/>
+        <Route path='/forgotPassword' element={<ForgetPassword/>}/>
         
     </Routes>
     </>

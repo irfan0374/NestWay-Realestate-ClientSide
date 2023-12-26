@@ -66,7 +66,7 @@ const PartnerDescription = () => {
                 <div className=" container flex w-96 flex-col gap-6 min-h-screen mx-auto ">
                     <form onSubmit={handleSubmit}>
 
-                        <div class="relative h-full w-full min-w-[200px] my-7">
+                        <div className="relative h-full w-full min-w-[200px] my-7">
                             <input
                                 name='state'
                                 {...getFieldProps("state")}

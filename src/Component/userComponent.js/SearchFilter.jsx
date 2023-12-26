@@ -84,10 +84,10 @@ const SearchFilter = () => {
               <label htmlFor="pickUpLocation" className="text-blue-500 block mb-2">
                 Property location
               </label>
-              <div className={`transition-opacity duration-500 ease-in-out ${showInput ? ''  : 'hidden'}`}>
+              <div className={`transition-opacity duration-500 ease-in-out ${showInput ? '' : 'hidden'}`}>
                 <GoogleSearch onLocationSelect={handleLocationSelect} />
               </div>
-              <div className={`transition-opacity duration-500 ease-in-out ${showInput ? 'hidden'  : ''}`}>
+              <div className={`transition-opacity duration-500 ease-in-out ${showInput ? 'hidden' : ''}`}>
                 <input
                   type="text"
                   name="location"
@@ -96,7 +96,7 @@ const SearchFilter = () => {
                   placeholder="Enter location"
                   className="input md:w-60 md:h-5  sm:h-20 mediumSm:h-12 mediumSm:w-60"
                   onClick={showInputField}
-                  
+
                 />
               </div>
             </div>
@@ -111,13 +111,26 @@ const SearchFilter = () => {
                 {...getFieldProps('propertfor')}
                 required=""
               >
-                <option selected>Pick the purpose</option>
+                <option value="">Pick the purpose</option> {/* Remove 'selected' from here */}
                 {propertyFor.map((data) => (
                   <option key={data} value={data}>
                     {data}
                   </option>
                 ))}
               </select>
+              {/* <select
+                name="propertfor"
+                className="select w-full max-w-xs"
+                {...getFieldProps('propertfor')}
+                required=""
+              >
+                <option selected>Pick the purpose</option>
+                {propertyFor.map((data) => (
+                  <option key={data} value={data}>
+                    {data}
+                  </option>
+                ))}
+              </select> */}
               {errors.propertfor && <p className="text-red-500 text-sm mt-1">{errors.propertfor}</p>}
             </div>
 
@@ -129,9 +142,10 @@ const SearchFilter = () => {
                 name="propertytype"
                 className="select w-full max-w-xs "
                 {...getFieldProps('propertytype')}
+               
                 required=""
               >
-                <option selected>Pick the property Type</option>
+                <option value="">Pick the property Type</option> 
                 {propertyType.map((data) => (
                   <option key={data} value={data}>
                     {data}

@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react'
 import { useFormik } from 'formik'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { loginSchema } from '../../../schema/loginValidation'
 import { loginVerification } from '../../../Api/partnerApi'
@@ -8,7 +8,7 @@ import { partnerLogin } from '../../../Redux/Slice/partnerSlice'
 import { toast } from "react-toastify"
 import "react-toastify/dist/ReactToastify.css";
 
-const PartnerLogin = () => {
+const PartnerLoginComponent = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
   const { errors, values, touched, getFieldProps, handleSubmit } = useFormik({
@@ -97,9 +97,9 @@ const PartnerLogin = () => {
 
                 <div className="mt-3">
                   <p>
-                    <a href="/forgetPassword" className="text-purple-500">
+                    <Link to={'/partner/forgotPassword'} className="text-purple-500">
                       Forgot Password?
-                    </a>
+                    </Link>
                   </p>
                 </div>
               </form>
@@ -111,4 +111,4 @@ const PartnerLogin = () => {
   )
 }
 
-export default PartnerLogin
+export default PartnerLoginComponent
