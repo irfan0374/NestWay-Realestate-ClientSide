@@ -6,10 +6,10 @@ import { jwtDecode } from "jwt-decode";
 import { toast } from "react-toastify";
 import { useDispatch } from "react-redux";
 import { userLogin } from "../../Redux/Slice/userSlice";
-const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
 import { userLoginWithGoogle } from "../../Api/userApi";
 
 const GoogleButtonUser = () => {
+const CLIENT_ID = import.meta.env.VITE_CLIENT_ID;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
