@@ -38,7 +38,7 @@ const sentMailCard = ({partnerId}) => {
             <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">✕</button>
           </form>
     <div className='flex space-x-2 my-4'>
-        <img src="/src/assets/profile.png"
+        <img src="/public/profile.png"
         className='w-14 h-12 rounded-lg '
         alt="partnerImg" />
         <div className='my-2 flex space-x-2'>

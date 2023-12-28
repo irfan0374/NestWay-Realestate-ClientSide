@@ -13,7 +13,7 @@ const BHKCard = () => {
                         <div className="group relative m-0  lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: {data:"1rk",value:"bhk"} })}>
                             <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                                 <img
-                                    src='/src/assets/buildings/room1.jpg'
+                                    src='/public/buildings/room1.jpg'
                                     className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                                     alt=""
                                 />
@@ -33,7 +33,7 @@ const BHKCard = () => {
                         <div className="group relative m-0  lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm"onClick={() => navigate('/CardDetails', { state: {data:"2bhk",value:"bhk"} })}>
                             <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                                 <img
-                                    src='/src/assets/buildings/room2.jpg'
+                                    src='/public/buildings/room2.jpg'
                                     className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                                     alt=""
                                 />
@@ -52,7 +52,7 @@ const BHKCard = () => {
                         <div className="group relative m-0  lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm"onClick={() => navigate('/CardDetails', { state: {data:"3bhk",value:"bhk"} })}>
                             <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                                 <img
-                                    src='/src/assets/buildings/room3.jpg'
+                                    src='/public/buildings/room3.jpg'
                                     className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                                     alt=""
                                 />
@@ -71,7 +71,7 @@ const BHKCard = () => {
                         <div className="group relative m-0  lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm"onClick={() => navigate('/CardDetails', { state: {data:"4bhk",value:"bhk"} })}>
                             <div className="z-10  lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                                 <img
-                                    src='/src/assets/buildings/room1.jpg'
+                                    src='/public/buildings/room1.jpg'
                                     className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                                     alt=""
                                 />

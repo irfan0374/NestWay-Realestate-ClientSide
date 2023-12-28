@@ -49,7 +49,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between mx-auto  p-2">
           <Link to={'/'}>
           <div className="flex-none">
-            <img src="/src/assets/Seven_Sky.png" className="h-16 w-auto" alt="sevenSky Logo" />
+            <img src="/public/Seven_Sky.png" className="h-16 w-auto" alt="sevenSky Logo" />
           </div>
           </Link>
 

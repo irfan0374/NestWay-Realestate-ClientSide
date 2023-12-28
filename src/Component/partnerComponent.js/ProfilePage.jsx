@@ -114,7 +114,7 @@ const ProfilePage = () => {
 
                 ) : (<img
                   src=
-                  {profile?.profile ? profile.profile : "/src/assets/Account.png"}
+                  {profile?.profile ? profile.profile : "/public/Account.png"}
 
                   className={"rounded-full object-cover w-36 h-36"}
                   alt=""

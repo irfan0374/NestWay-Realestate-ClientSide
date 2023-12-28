@@ -51,7 +51,7 @@ const PartnerLoginComponent = () => {
             <div
               className="w-full  lg:w-1/2 flex flex-col items-center justify-center p-20 bg-no-repeat bg-cover bg-center"
               style={{
-                backgroundImage: "url(/src/assets/loginImage/partnerLogin.jpg)",
+                backgroundImage: "url(/public/loginImage/partnerLogin.jpg)",
               }}>
               <div>
                 <p className="text-black">

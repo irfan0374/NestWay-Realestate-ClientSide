@@ -7,7 +7,7 @@ const Footer = () => {
         <div>
           <img
             className=" h-9 lg:h-14 w-auto"
-            src="/src/assets/Seven_Sky.png"
+            src="/public/Seven_Sky.png"
             alt="Logo"
           />
         </div>

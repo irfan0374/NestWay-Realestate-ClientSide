@@ -113,7 +113,7 @@ const PartnerHome = () => {
             ) : (
               <div className=' mx-20 mediumSm:mx-64' >
 
-                <img src="/src/assets/noProperty.png" className='w-52 h-32 lg:w-72 lg:h-56 lg:mx-48 ' alt="No Property" />
+                <img src="/public/noProperty.png" className='w-52 h-32 lg:w-72 lg:h-56 lg:mx-48 ' alt="No Property" />
                 
               </div> 
             )}

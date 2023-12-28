@@ -42,7 +42,7 @@ const Homepage = () => {
     <>
     <div className='h-screen '>
       <div className="hero h-screen" style={{
-        backgroundImage: "url('/src/assets/bannerOne.jpg')",
+        backgroundImage: "url('/public/bannerOne.jpg')",
         backgroundSize: 'cover',
         backgroundRepeat: 'no-repeat',
         backgroundPosition: 'center',

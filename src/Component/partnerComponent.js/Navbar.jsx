@@ -58,7 +58,7 @@ const Navbar = () => {
       <div className="navbar bg-black">
         <div className="flex-1">
           <div className="flex-none">
-            <img src="/src/assets/Logo_White.png" className="h-16 w-auto" alt="sevenSky Logo" />
+            <img src="/public/Logo_White.png" className="h-16 w-auto" alt="sevenSky Logo" />
           </div>
         </div>
         <div className="flex-none space-x-6">

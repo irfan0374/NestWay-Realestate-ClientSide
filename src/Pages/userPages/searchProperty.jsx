@@ -48,7 +48,7 @@ const SearchProperty = () => {
             <div className='flex flex-col justify-center items-center'>
             <img
               className='w-80 h-64 transition-transform transform hover:scale-105'
-              src='/src/assets/noProperty.png'
+              src='/public/noProperty.png'
               alt='No Property Available'
             />
             <h1 className='text-2xl font-bold mx-12'>No Property Available</h1>

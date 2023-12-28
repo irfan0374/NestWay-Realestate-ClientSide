@@ -87,7 +87,7 @@ const DetailePage = ({ property }) => {
                     <div className=''>
                         <div className='flex md:flex-row flex-col gap-1'>
                             <div className=' w-full md:w-1/2'>
-                                <img className='object-cover w-full rounded-md md:h-[400px] sm:h-[300px]' src={property.propertyImage[0] ? property.propertyImage[0] : "/src/assets/noBuliding.png"} alt=" 1 Image not found" />
+                                <img className='object-cover w-full rounded-md md:h-[400px] sm:h-[300px]' src={property.propertyImage[0] ? property.propertyImage[0] : "/public/noBuliding.png"} alt=" 1 Image not found" />
 
                             </div>
 
@@ -95,16 +95,16 @@ const DetailePage = ({ property }) => {
 
                                 <div className='w-full grid grid-cols-2 gap-2'>
 
-                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[1] ? property.propertyImage[1] : "/src/assets/noBuliding.png"} alt=" 1 Image not found" />
+                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[1] ? property.propertyImage[1] : "/public/noBuliding.png"} alt=" 1 Image not found" />
 
 
-                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[2] ? property.propertyImage[2] : "/src/assets/noBuliding.png"} alt=" 1 Image not found" />
+                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[2] ? property.propertyImage[2] : "/public/noBuliding.png"} alt=" 1 Image not found" />
 
 
-                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[3] ? property.propertyImage[3] : "/src/assets/noBuliding.png"} alt=" 1 Image not found" />
+                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[3] ? property.propertyImage[3] : "/public/noBuliding.png"} alt=" 1 Image not found" />
 
 
-                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[4] ? property.propertyImage[4] : "/src/assets/noBuliding.png"} alt=" Image not found" />
+                                    <img className='object-cover w-full rounded-md  h-[198px]' src={property.propertyImage[4] ? property.propertyImage[4] : "/public/noBuliding.png"} alt=" Image not found" />
                                 </div>
 
                             </div>

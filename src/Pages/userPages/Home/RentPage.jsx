@@ -120,7 +120,7 @@ const RentPage = () => {
                   {currentRecords.length < 1 ? (
                     <div>
                       <img
-                        src='/src/assets/noProperty.png'
+                        src='/public/noProperty.png'
                         alt='No Property'
                       />
                     </div>

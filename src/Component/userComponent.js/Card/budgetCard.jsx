@@ -13,7 +13,7 @@ const BudgetCard = () => {
             <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 100000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
-                  src='/src/assets/buildings/room5.jpg'
+                  src='/public/buildings/room5.jpg'
                   className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                   alt=""
                 />
@@ -30,7 +30,7 @@ const BudgetCard = () => {
             <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 300000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
-                  src='/src/assets/buildings/bedroom2.jpg'
+                  src='/public/buildings/bedroom2.jpg'
                   className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                   alt=""
                 />
@@ -47,7 +47,7 @@ const BudgetCard = () => {
             <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 1500000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
-                  src='/src/assets/buildings/room3.jpg'
+                  src='/public/buildings/room3.jpg'
                   className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                   alt=""
                 />
@@ -64,7 +64,7 @@ const BudgetCard = () => {
             <div className="group relative m-0 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 w-72 rounded-xl shadow-xl ring-gray-900/5 sm:mx-5 sm:w-sm" onClick={() => navigate('/CardDetails', { state: { data: 5000000, value: "budget" } })}>
               <div className="z-10 lg:h-48 lg:w-48 md:h-80 md:w-80 sm:h-96 sm:w-96 overflow-hidden rounded-xl border border-gray-200 opacity-80 transition duration-300 ease-in-out group-hover:opacity-100 dark:border-gray-700 dark:opacity-70">
                 <img
-                  src='/src/assets/buildings/room2.jpg'
+                  src='/public/buildings/room2.jpg'
                   className="animate-fade-in block h-full w-full scale-100 transform object-cover object-center opacity-100 transition duration-300 group-hover:scale-110"
                   alt=""
                 />

@@ -78,7 +78,7 @@ const Chatbox = ({ chat, currentPartner, setMessages, messages, socket }) => {
                                     </svg>
                                 </span>
                                 <img
-                                    src={userData?.profile ? userData?.profile : '/src/assets/Account.png'}
+                                    src={userData?.profile ? userData?.profile : '/public/Account.png'}
                                     alt="userProfile"
                                     className="w-10 sm:w-16 h-10 sm:h-16 rounded-full"
                                 />
