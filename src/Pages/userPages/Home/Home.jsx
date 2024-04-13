@@ -69,7 +69,7 @@ const Homepage = () => {
         <div>
           <Tabs value="Property">
             <TabsHeader className="w-auto mx-auto flex justify-center bg-white ">
-              {tabsData.map(({ label, value, icon: Icon }) => (
+              {tabsData?.map(({ label, value, icon: Icon }) => (
                 <Tab key={value} value={value} className="w-40">
                   <div className="flex items-center gap-2">
                     {React.createElement(Icon, { className: "w-5 h-5" })}
@@ -79,7 +79,7 @@ const Homepage = () => {
               ))}
             </TabsHeader>
             <TabsBody>
-              {tabsData.map(({ label, value, icon: Icon, LazyComponent }) => (
+              {tabsData?.map(({ label, value, icon: Icon, LazyComponent }) => (
                 <TabPanel key={value} value={value}>
                   <Suspense fallback={<Loading />}>
                     <LazyComponent />

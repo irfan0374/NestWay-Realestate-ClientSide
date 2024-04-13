@@ -112,7 +112,7 @@ const RentPage = () => {
           <div className='lg:order-2 h-full overflow-y-auto border rounded-lg px-2 py-3 '>
             <div className='overflow-y-auto flex flex-wrap justify-center'>
               {currentRecords.length > 0 ? (
-                currentRecords.map((data) => (
+                currentRecords?.map((data) => (
                   <MainCard key={data?._id} property={data} />
                 ))
               ) : (
@@ -142,7 +142,7 @@ const RentPage = () => {
                 </Button>
 
                 <div className="flex gap-2">
-                  {pageNumbers.map((page) => (
+                  {pageNumbers?.map((page) => (
                     <Button
                       key={page}
                       variant='text'

@@ -49,7 +49,7 @@ const UserProfile = () => {
 
 <Tabs value="Profile">
       <TabsHeader className="w-96 mx-auto flex justify-center">
-        {data.map(({ label, value, icon }) => (
+        {data?.map(({ label, value, icon }) => (
           <Tab
             key={value}
             value={value}
@@ -63,7 +63,7 @@ const UserProfile = () => {
         ))}
       </TabsHeader>
       <TabsBody>
-        {data.map(({ value, desc }) => (
+        {data?.map(({ value, desc }) => (
           <TabPanel key={value} value={value}>
             {desc}
           </TabPanel>

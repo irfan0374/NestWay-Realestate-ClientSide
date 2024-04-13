@@ -124,7 +124,7 @@ const currentRecords = filteredProperty.slice(
               </Button>
 
               <div className="flex gap-2">
-                {pageNumbers.map((page) => (
+                {pageNumbers?.map((page) => (
                   <Button
                     key={page}
                     variant='text'

@@ -24,7 +24,7 @@ const propertyPage = () => {
   return (
     <>
     <Navbar2/>
-    {property.map((data)=>(
+    {property?.map((data)=>(
     loading?(<p>loading</p>):(   
 
         <div key={data._id} className='grid grid-cols-2 gap-4'>

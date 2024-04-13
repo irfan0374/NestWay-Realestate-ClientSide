@@ -39,7 +39,7 @@ const SearchProperty = () => {
         <div className="lg:order-2 h-full overflow-y-auto border rounded-lg px-2 py-3 ">
           <div className="overflow-y-auto flex flex-wrap justify-center">
           {Property && Property.length > 0 ? (
-            Property.map((property) => (
+            Property?.map((property) => (
               <div key={property._id}>
                 <MainCard property={property} />
               </div>
