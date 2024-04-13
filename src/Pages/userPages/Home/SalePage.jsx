@@ -71,7 +71,7 @@ const currentRecords = filteredProperty.slice(
 
     useEffect(()=>{
 
-      const updatedFilterProperty=originalProperty.filter((property)=>{
+      const updatedFilterProperty=originalProperty?.filter((property)=>{
         const {propertyType}=filterOption;
         const selectedPropertyType=Object.keys(propertyType).filter((type)=>propertyType[type]);
         const selectedTypeMatches=
@@ -108,7 +108,7 @@ const currentRecords = filteredProperty.slice(
 
           <div className='lg:order-2 h-full overflow-y-auto border rounded-lg px-2 py-3 '>
             <div className='overflow-y-auto flex flex-wrap justify-center'>
-              {filteredProperty.map((data) => (
+              {filteredProperty?.map((data) => (
                 <MainCard key={data?._id} property={data} />
               ))}
             </div>

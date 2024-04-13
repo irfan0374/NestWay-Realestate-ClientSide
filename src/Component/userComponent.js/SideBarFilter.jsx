@@ -9,10 +9,10 @@ const SideBarFilter = ({ setProperty, filterproperty }) => {
     });
   
     useEffect(() => {
-      const filteredProperty = filterproperty.filter((property) => {
+      const filteredProperty = filterproperty?.filter((property) => {
         const { propertyType } = filterOption;
   
-        const selectedPropertyType = Object.keys(propertyType).filter(
+        const selectedPropertyType = Object.keys(propertyType)?.filter(
           (type) => propertyType[type]
         );
   
@@ -42,12 +42,12 @@ const SideBarFilter = ({ setProperty, filterproperty }) => {
             <div className="flex justify-center px-2 py-1 border rounded-lg bg-gray-400 font-bold font-serif">
               Property Type
             </div>
-            {Object.keys(filterOption.propertyType).map((option) => (
+            {Object.keys(filterOption?.propertyType).map((option) => (
               <div key={option} className="flex px-2 py-1 border rounded-lg mt-1">
                 <input
                   type="checkbox"
                   className="checkbox"
-                  checked={filterOption.propertyType[option]}
+                  checked={filterOption?.propertyType[option]}
                   onChange={() => handleCheckBoxChange(option, 'propertyType')}
                 />
                 <label className="w-full py-2 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">
