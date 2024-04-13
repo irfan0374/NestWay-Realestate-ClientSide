@@ -1,6 +1,6 @@
 import React from 'react'
 import Navbar from '../../Component/userComponent.js/Navbar2'
-import About from '../../Component/userComponent.js/about'
+import About from '../../Component/userComponent.js/About'
 import Footer from '../../Component/CommonComponent/Footer'
 
 const AboutPage = () => {

@@ -30,7 +30,6 @@ const PartnerRoute = () => {
         <Route path='/chat' element={<Chat/>}/>
         <Route path='/buyerDetails' element={<BuyerDetailPage/>}/>
         <Route path='/forgotPassword' element={<ForgetPassword/>}/>
-        
     </Routes>
     </>
   )
